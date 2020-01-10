@@ -2,21 +2,45 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
+.landingPageContainer {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 10% 60% 30%;
+}
 
-
-.menuContainer {
+.menuBtnContainer {
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 6vh;
   height: 6vh;
   margin: 4vh;
+  grid-area: 1/1/ span 1/ span 3;
 }
 
 .dash {
   height: 100%;
   background-color: black;
   width: 5px;
+}
+
+.welcomeMessage {
+  grid-area: 2/2/ span 1/ span 1;
+}
+
+.catImage {
+  grid-area: 2/ 3/ span 1/ span 1;
+  height: 30vh;
+  transform: rotate(-90deg);
+  justify-self: end;
+}
+
+.dogImage {
+  grid-area: 3/ 3/span 1/ span 1;
+  height: 40vh;
+  justify-self: flex-start;
+  align-self: flex-end;
 }
