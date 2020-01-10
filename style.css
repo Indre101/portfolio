@@ -1,4 +1,22 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.menuContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 6vh;
+  height: 6vh;
+  margin: 4vh;
+}
+
+.dash {
+  height: 100%;
+  background-color: black;
+  width: 5px;
 }
