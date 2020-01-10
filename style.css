@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 
 }
 
 .landingPageContainer {
   height: 100vh;
   display: grid;
-  grid-template-columns: 10% 60% 30%;
+  grid-template-columns: 1fr 3fr 3fr
 }
 
 .menuBtnContainer {
@@ -29,18 +32,33 @@
 
 .welcomeMessage {
   grid-area: 2/2/ span 1/ span 1;
+  align-self: flex-end;
 }
 
 .catImage {
-  grid-area: 2/ 3/ span 1/ span 1;
-  height: 30vh;
+  grid-area: 1/ 3/ span 1/ span 1;
+  width: 20vw;
   transform: rotate(-90deg);
-  justify-self: end;
+  justify-self: flex-end;
+  align-self: center;
+  object-fit: contain;
+
 }
 
 .dogImage {
   grid-area: 3/ 3/span 1/ span 1;
-  height: 40vh;
+  width: 25vw;
   justify-self: flex-start;
   align-self: flex-end;
+  object-fit: contain;
+}
+
+h1 {
+  font-size: 7vh;
+}
+
+.welcomeMessage>h4 {
+  color: #6e6e75;
+  font-size: 2vh;
+
 }
