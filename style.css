@@ -35,12 +35,17 @@
   align-self: flex-end;
 }
 
-.catImage {
+.catWithGlassses {
   grid-area: 1/ 3/ span 1/ span 1;
-  width: 20vw;
-  transform: rotate(-90deg);
   justify-self: flex-end;
   align-self: center;
+
+
+}
+
+.catImage {
+  width: 20vw;
+  transform: rotate(-90deg);
   object-fit: contain;
 
 }
@@ -54,7 +59,7 @@
 }
 
 h1 {
-  font-size: 7vh;
+  font-size: 5.5vw;
 }
 
 .welcomeMessage>h4 {
