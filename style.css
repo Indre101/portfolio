@@ -22,6 +22,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-direction: column;
   width: 6vh;
   height: 6vh;
   margin: 4vh;
@@ -32,6 +33,7 @@
   height: 100%;
   background-color: #6e6e75c4;
   width: 5px;
+  transform: rotate(-90deg);
 }
 
 .welcomeMessage {
@@ -73,6 +75,36 @@
 
 h1 {
   font-size: 5vw;
+}
+
+
+/* h1::before {
+  content: "Hi, I am Indre";
+  position: absolute;
+  background: linear-gradient(135deg, black -3%, black, #48ade2 86%, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: textShadow 1s linear infinite alternate forwards;
+} */
+
+
+h1 {
+  text-align: center;
+  background: linear-gradient(to left, black 20%, #48ade2 10%, #48ade2 10%, black 80%);
+  background-size: 200% auto;
+  color: black;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 1.5s 1.5s linear 1 forwards;
+}
+
+
+@keyframes shine {
+  to {
+    background-position: -230% center;
+  }
 }
 
 .welcomeMessage>h4 {
