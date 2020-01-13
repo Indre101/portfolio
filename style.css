@@ -8,8 +8,9 @@
 }
 
 :root {
-  --secondary-color: #6e6e75c4;
+  --secondary-color: #333333a1;
   --accent-color: #48ade2;
+  --trenary-color: #efefef;
   --grid-columns: 10% 80% 10%;
   --border-15: 15px;
 }
@@ -77,7 +78,7 @@
   align-self: flex-end;
   display: grid;
   grid-template-columns: 1;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .catImage {
@@ -138,6 +139,7 @@ h1 {
   align-items: center;
   flex-direction: column;
   position: fixed;
+  z-index: 80;
 }
 
 h2 {
@@ -154,7 +156,7 @@ h2 {
 }
 
 .slideUpAnimation {
-  animation: slideUp 1s linear forwards 1;
+  animation: slideUp 0.5s linear forwards 1;
 }
 
 @keyframes slideUp {
@@ -164,7 +166,7 @@ h2 {
 }
 
 .slideDownAnimation {
-  animation: slideDown 1s linear forwards 1;
+  animation: slideDown 0.5s linear forwards 1;
 }
 
 @keyframes slideDown {
@@ -174,25 +176,28 @@ h2 {
 }
 
 .dash:first-child.clicked {
-  transform: rotate(-40deg) translateX(-10px);
+  transform: rotate(-45deg) translateX(-10px);
 }
 
 .dash:nth-child(3).clicked {
-  transform: rotate(40deg) translateX(-10px);
+  transform: rotate(45deg) translateX(-10px);
 }
 
 .dash:nth-child(2).clicked {
   display: none;
 }
 
-.projectsPageContainer {
-  height: 100vh;
+.projectsPageContainer,
+.aboutMePageContainer {
+  min-height: 100vh;
   display: grid;
   grid-template-columns: var(--grid-columns);
   grid-template-rows: 15% 10% auto;
+  background-color: var(--trenary-color);
 }
 
-.projectsPageContainer h2 {
+.projectsPageContainer h2,
+.aboutMePageContainer h2 {
   grid-area: 1/2 / span 1 / span 1;
   align-self: flex-end;
   justify-self: center;
@@ -250,7 +255,7 @@ input:nth-child(3) {
 }
 
 .backOftheCard {
-  background-color: black;
+  background-color: var(--accent-color);
   transform: rotateY(180deg);
   position: absolute;
 }
@@ -271,10 +276,15 @@ input:nth-child(3) {
 }
 
 a.d-flex-centered {
-  color: black;
+  color: var(--secondary-color);
   text-decoration: none;
 }
 
 .d-flex-centered h4 {
   margin: 0 1vh;
+}
+
+/* ABOUT ME */
+.aboutMePageContainer {
+  background-color: white;
 }

@@ -40,7 +40,7 @@ function animateMenuToslideOut(elementToAnimate) {
   setTimeout(() => {
     elementToAnimate.classList.add("d-none");
     elementToAnimate.classList.remove("d-flex");
-  }, 1000);
+  }, 500);
 }
 
 
