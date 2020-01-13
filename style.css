@@ -221,7 +221,7 @@ input:nth-child(3) {
   align-items: center;
 }
 
-.projectsImage {
+.projectsCardFront {
   background-image: url(./images/photos/dog.png);
   background-size: contain;
   background-position: bottom;
@@ -246,6 +246,7 @@ input:nth-child(3) {
   box-shadow: 1px 1px 1px 1px black;
   backface-visibility: hidden;
   border-radius: var(--border-15);
+  margin: 0 0 2vh 0;
 }
 
 .backOftheCard {
@@ -259,4 +260,21 @@ input:nth-child(3) {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+}
+
+.projectsName {
+  margin: 1vh 0;
+}
+
+.linkIcon {
+  width: 2vh;
+}
+
+a.d-flex-centered {
+  color: black;
+  text-decoration: none;
+}
+
+.d-flex-centered h4 {
+  margin: 0 1vh;
 }
