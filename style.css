@@ -200,21 +200,85 @@ h2 {
 
 .projectsFilters {
   grid-area: 2/2/ span 1/ span 1;
+  align-self: center;
+  justify-self: center;
+}
+
+input:nth-child(2),
+input:nth-child(3) {
+  margin: 0 0.5vw 0 3vw;
 
 }
 
 .projects {
   display: grid;
   grid-area: 3/2/ span 1/ span 1;
-
+  justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(auto, 320px));
 }
+
+.project {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 
 .projectsImage {
   background-image: url(./images/photos/dog.png);
   background-size: contain;
   background-position: bottom;
   background-repeat: no-repeat;
+  position: relative;
+  background-color: white;
+
+}
+
+
+
+
+.projectsCard {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.projectsCard:hover {
+  transform: rotateY(180deg);
+}
+
+
+
+
+.cardBackandFront {
   height: 350px;
   width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 1px 1px black;
+  border-radius: 15px;
+  backface-visibility: hidden;
+}
+
+.backOftheCard {
+  background-color: black;
+  transform: rotateY(180deg);
+  position: absolute;
+
+}
+
+
+
+
+.typeOfProject {
+  background-color: white;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
