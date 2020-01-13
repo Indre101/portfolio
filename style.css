@@ -10,6 +10,7 @@
 
 :root {
   --secondary-color: #6e6e75c4;
+  --accent-color: #48ade2;
 }
 
 .landingPageContainer {
@@ -29,6 +30,7 @@
   width: 40px;
   background-color: var(--secondary-color);
   height: 5px;
+  border-radius: 15px;
   margin: 1vh;
 }
 
@@ -77,7 +79,7 @@ h1 {
 
 h1 {
   text-align: center;
-  background: linear-gradient(to left, black 20%, #48ade2 10%, #48ade2 10%, black 80%);
+  background: linear-gradient(to left, black 20%, var(----accent-color) 10%, var(----accent-color) 10%, black 80%);
   background-size: 200% auto;
   color: black;
   background-clip: text;
