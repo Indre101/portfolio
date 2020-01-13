@@ -10,8 +10,19 @@
 :root {
   --secondary-color: #6e6e75c4;
   --accent-color: #48ade2;
-
   --grid-columns: 10% 80% 10%;
+  --border-15: 15px;
+}
+
+.d-flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.align-justify-self-center {
+  align-self: center;
+  justify-self: center;
 }
 
 .landingPageContainer {
@@ -52,14 +63,12 @@
   width: 40px;
   background-color: var(--secondary-color);
   height: 5px;
-  border-radius: 15px;
+  border-radius: var(--border-15);
   margin: 1vh;
 }
 
 .welcomeMessage {
   grid-area: 1/1 / span 3 / span 3;
-  align-self: center;
-  justify-self: center;
 }
 
 .catWithGlassses {
@@ -82,8 +91,6 @@
   grid-area: 1/ 1 / span 1 / span 1;
   width: 12vw;
   transform: rotate(-90deg);
-  align-self: center;
-  justify-self: center;
   animation: glassesOn 1s ease-in-out forwards 1;
 }
 
@@ -182,7 +189,7 @@ h2 {
   height: 100vh;
   display: grid;
   grid-template-columns: var(--grid-columns);
-  grid-template-rows: 20% 10% 70%;
+  grid-template-rows: 15% 10% auto;
 }
 
 .projectsPageContainer h2 {
@@ -193,8 +200,6 @@ h2 {
 
 .projectsFilters {
   grid-area: 2/2 / span 1 / span 1;
-  align-self: center;
-  justify-self: center;
 }
 
 input:nth-child(2),
@@ -238,12 +243,9 @@ input:nth-child(3) {
 .cardBackandFront {
   height: 300px;
   width: 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   box-shadow: 1px 1px 1px 1px black;
   backface-visibility: hidden;
-  border-radius: 15px;
+  border-radius: var(--border-15);
 }
 
 .backOftheCard {
@@ -257,7 +259,4 @@ input:nth-child(3) {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
