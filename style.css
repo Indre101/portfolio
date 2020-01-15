@@ -269,20 +269,21 @@ input:nth-child(3) {
 .cardBackandFront {
   height: 300px;
   width: 250px;
-  box-shadow: 1px 1px 1px 1px var(--accent-color);
+  box-shadow: 1px 1px 1px 1px var(--secondary-color);
   backface-visibility: hidden;
   border-radius: var(--border-15);
   margin: 0 0 2vh 0;
 }
 
 .backOftheCard {
-  background-color: var(--accent-color);
+  background-color: white;
   transform: rotateY(180deg);
   position: absolute;
 }
 
 .typeOfProject {
-  background-color: white;
+  background-color: var(--accent-color);
+  color: white;
   width: 150px;
   height: 150px;
   border-radius: 50%;
