@@ -227,7 +227,7 @@ input:nth-child(3) {
 }
 
 .projectsCardFront {
-  background-image: url(./images/photos/dog.png);
+  background-image: url(./images/photos/project-images/chad.png);
   background-size: contain;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -248,7 +248,7 @@ input:nth-child(3) {
 .cardBackandFront {
   height: 300px;
   width: 250px;
-  box-shadow: 1px 1px 1px 1px black;
+  box-shadow: 1px 1px 1px 1px var(--accent-color);
   backface-visibility: hidden;
   border-radius: var(--border-15);
   margin: 0 0 2vh 0;

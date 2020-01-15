@@ -67,3 +67,10 @@ function removeUNClickedClass(elementToAddTheClass) {
 function toggleClassClicked(elementToAddTheClass) {
   elementToAddTheClass.classList.toggle("clicked");
 }
+
+
+// Fetching the projects data
+fetch("projects.json").then(res =>
+  res.json()).then(data => {
+  console.log(data[0])
+})
