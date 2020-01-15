@@ -88,19 +88,35 @@
   transform: rotate(-90deg);
   object-fit: contain;
   filter: var(--shadow);
+  animation: slideDwonCat 1.2s ease-in-out forwards 1;
+  opacity: 0;
+}
+
+@keyframes slideDwonCat {
+  0% {
+    transform: translateX(100vw) rotate(-90deg);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .glassess {
   grid-area: 1/ 1 / span 1 / span 1;
   width: 12vw;
   transform: rotate(-90deg);
-  animation: glassesOn 1s ease-in-out forwards 1;
+  animation: glassesOn 1s 1.2s ease-in-out forwards 1;
   filter: var(--shadow);
+  opacity: 0;
 }
 
 @keyframes glassesOn {
   0% {
     transform: translateY(-100vh) rotate(-180deg);
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -119,7 +135,7 @@ h1 {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shine 1.5s 1.5s linear 1 forwards;
+  animation: shine 1.5s 2.3s linear 1 forwards;
 }
 
 @keyframes shine {
