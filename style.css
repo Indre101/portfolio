@@ -142,8 +142,29 @@ h1 {
   z-index: 80;
 }
 
+.openMenuWindow a {
+  color: black;
+  text-decoration: none;
+  margin: 3vh;
+}
+
+.openMenuWindow a h2 {
+  height: 2vh;
+  border-radius: 15px;
+  line-height: 3.8vh;
+  padding: 0.5vh;
+  transition: background-color 0.5s ease-in;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.openMenuWindow a h2:hover {
+  background-color: var(--accent-color);
+}
+
 h2 {
-  font-size: 3vh;
+  font-size: 4vh;
   margin: 3vh;
 }
 
