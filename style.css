@@ -13,6 +13,7 @@
   --trenary-color: #efefef;
   --grid-columns: 10% 80% 10%;
   --border-15: 15px;
+  --shadow: drop-shadow(4px 4px 1px black);
 }
 
 .d-flex-centered {
@@ -86,6 +87,7 @@
   width: 25vw;
   transform: rotate(-90deg);
   object-fit: contain;
+  filter: var(--shadow);
 }
 
 .glassess {
@@ -93,6 +95,7 @@
   width: 12vw;
   transform: rotate(-90deg);
   animation: glassesOn 1s ease-in-out forwards 1;
+  filter: var(--shadow);
 }
 
 @keyframes glassesOn {
@@ -321,6 +324,7 @@ a.d-flex-centered {
   width: 40%;
   object-fit: contain;
   margin-top: auto;
+  filter: var(--shadow);
 }
 
 ul {
