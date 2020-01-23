@@ -1,6 +1,19 @@
 const menuButton = document.getElementById("menuButton");
 const openMenuWindow = document.getElementById("openMenuWindow");
 const menuIconDashes = document.querySelectorAll(".dash");
+const projectCardFront = document.querySelector(".projectsCardFront");
+const typeOfProject = document.querySelector(".typeOfProject")
+
+
+projectCardFront.onmouseover = function () {
+  typeOfProject.classList.add("rotateTypeOfproject")
+  console.log("object");
+}
+
+
+projectCardFront.onmouseout = function () {
+  typeOfProject.classList.remove("rotateTypeOfproject")
+}
 
 let i = 0;
 
@@ -67,6 +80,11 @@ function removeUNClickedClass(elementToAddTheClass) {
 function toggleClassClicked(elementToAddTheClass) {
   elementToAddTheClass.classList.toggle("clicked");
 }
+
+
+
+
+
 
 
 // Fetching the projects data

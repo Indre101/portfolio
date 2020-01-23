@@ -8,9 +8,9 @@
 }
 
 :root {
-  --secondary-color: #333333a1;
+  --secondary-color: #4f6f80;
   --accent-color: #48ade2;
-  --trenary-color: #efefef;
+  --trenary-color: #9eddff;
   --grid-columns: 10% 80% 10%;
   --border-15: 15px;
   --shadow: drop-shadow(4px 4px 1px black);
@@ -36,17 +36,32 @@
 .menuBtnContainer {
   margin: 4vh;
   grid-area: 1/1 / span 1 / span 1;
+  border-radius: 50%;
   position: fixed;
   z-index: 100;
+  transition: filter 0.3s ease-in-out;
   transform-origin: 50% 50%;
+  justify-content: space-evenly;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+}
+
+.menuBtnContainer:hover {
+  filter: var(--shadow);
 }
 
 .menuBtnContainer.clicked {
   animation: rotateButton 0.3s linear forwards 1;
+  justify-content: center;
 }
 
 .menuBtnContainer.unclicked {
   animation: rotateButtonBack 0.3s linear forwards 1;
+  justify-content: space-evenly;
 }
 
 @keyframes rotateButton {
@@ -66,7 +81,7 @@
   background-color: var(--secondary-color);
   height: 5px;
   border-radius: var(--border-15);
-  margin: 1vh;
+  transform-origin: center;
 }
 
 .welcomeMessage {
@@ -179,7 +194,7 @@ h1 {
 }
 
 .openMenuWindow a h2:hover {
-  background-color: var(--accent-color);
+  background-color: var(--trenary-color);
 }
 
 h2 {
@@ -216,11 +231,11 @@ h2 {
 }
 
 .dash:first-child.clicked {
-  transform: rotate(-45deg) translateX(-10px);
+  transform: rotate(-45deg) translate(0px, 1.8px);
 }
 
 .dash:nth-child(3).clicked {
-  transform: rotate(45deg) translateX(-10px);
+  transform: rotate(45deg) translate(0px, -1.8px);
 }
 
 .dash:nth-child(2).clicked {
@@ -267,37 +282,32 @@ input:nth-child(3) {
 }
 
 .projectsCardFront {
-  background-image: url(./images/photos/project-images/chad.png);
-  background-size: contain;
-  background-position: bottom;
-  background-repeat: no-repeat;
-  position: relative;
-  background-color: white;
+  background: black;
+  transition: background-image 1s, background-position 1s;
+
+  background-size: 200% auto;
+  -webkit-text-fill-color: transparent;
 }
 
-.projectsCard {
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.projectsCard:hover {
-  transform: rotateY(180deg);
+.projectsCardFront:hover {
+  background-image: linear-gradient(
+    to left,
+    black 20%,
+    var(--accent-color) 10%,
+    var(--accent-color) 10%,
+    black 80%
+  );
+  background-position: -240% center;
 }
 
 .cardBackandFront {
+  transform-style: preserve-3d;
+  perspective: 1000px;
   height: 300px;
   width: 250px;
   box-shadow: 1px 1px 1px 1px var(--secondary-color);
-  backface-visibility: hidden;
   border-radius: var(--border-15);
   margin: 0 0 2vh 0;
-}
-
-.backOftheCard {
-  background-color: white;
-  transform: rotateY(180deg);
-  position: absolute;
 }
 
 .typeOfProject {
@@ -306,6 +316,21 @@ input:nth-child(3) {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  position: absolute;
+  transform: rotateY(90deg);
+}
+
+.rotateTypeOfproject {
+  transition: transform 0.5s;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  animation: rotateBackCircle 0.5s 0.1s ease-in forwards 1;
+}
+
+@keyframes rotateBackCircle {
+  100% {
+    transform: none;
+  }
 }
 
 .projectsName {
