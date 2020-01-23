@@ -1,6 +1,19 @@
 const menuButton = document.getElementById("menuButton");
 const openMenuWindow = document.getElementById("openMenuWindow");
 const menuIconDashes = document.querySelectorAll(".dash");
+const projectCardFront = document.querySelector(".projectsCardFront");
+const typeOfProject = document.querySelector(".typeOfProject")
+
+
+projectCardFront.onmouseover = function () {
+  typeOfProject.classList.add("rotateTypeOfproject")
+  console.log("object");
+}
+
+
+projectCardFront.onmouseout = function () {
+  typeOfProject.classList.remove("rotateTypeOfproject")
+}
 
 let i = 0;
 
@@ -9,18 +22,22 @@ menuButton.onclick = function () {
   menuIconDashes.forEach(dash => {
     setTimeout(() => {
       toggleClassClicked(dash);
+      dash.classList.remove("unclicked")
     }, 150);
   });
 
-
   animateMenuToslideIn(openMenuWindow);
-  removeUNClickedClass(menuButton);
-  addClickedClass(menuButton);
-
 
   if (i == 2) {
-    addUNClickedClass(menuButton)
-    removeClickedClass(menuButton)
+
+    menuIconDashes.forEach(dash => {
+      setTimeout(() => {
+        dash.classList.add("unclicked")
+      }, 150);
+    });
+
+
+
     animateMenuToslideOut(openMenuWindow)
     i = 0;
   }
@@ -44,29 +61,15 @@ function animateMenuToslideOut(elementToAnimate) {
 }
 
 
-function addClickedClass(elementToAddTheClass) {
-  elementToAddTheClass.classList.add("clicked");
-}
-
-
-function removeClickedClass(elementToAddTheClass) {
-  elementToAddTheClass.classList.remove("clicked");
-}
-
-
-function addUNClickedClass(elementToAddTheClass) {
-  elementToAddTheClass.classList.add("unclicked");
-}
-
-
-function removeUNClickedClass(elementToAddTheClass) {
-  elementToAddTheClass.classList.remove("unclicked");
-}
-
 
 function toggleClassClicked(elementToAddTheClass) {
   elementToAddTheClass.classList.toggle("clicked");
 }
+
+
+
+
+
 
 
 // Fetching the projects data
