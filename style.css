@@ -8,12 +8,13 @@
 }
 
 :root {
-  --secondary-color: #4f6f80;
+  --primary-color: #143140;
+  --secondary-color: #296180;
   --accent-color: #48ade2;
-  --trenary-color: #9eddff;
   --grid-columns: 10% 80% 10%;
+  --shadow-color: #787f84c4;
   --border-15: 15px;
-  --shadow: drop-shadow(4px 4px 1px black);
+  --shadow: drop-shadow(4px 4px 1px #143140);
 }
 
 .d-flex-centered {
@@ -56,21 +57,20 @@
 
 .dash {
   width: 40px;
-  background-color: var(--secondary-color);
+  background-color: var(--accent-color);
   height: 5px;
   border-radius: var(--border-15);
   transform-origin: right;
   transition: position 0.5s;
   visibility: visible;
-  /* animation: dashesBack 1s ease-in-out 1 forwards; */
 }
 
 /* Unclicked */
 .dash:first-child.unclicked {
-  animation: dashesBack 0.5s ease-in-out 1 forwards;
+  animation: firstdashBacktoOriginalPosition 0.5s ease-in-out 1 forwards;
 }
 
-@keyframes dashesBack {
+@keyframes firstdashBacktoOriginalPosition {
   0% {
     transform: translateY(17px);
   }
@@ -81,10 +81,10 @@
 }
 
 .dash:nth-child(3).unclicked {
-  animation: dashesBackThird 0.5s ease-in-out 1 forwards;
+  animation: thirddashBacktoOriginalPosition 0.5s ease-in-out 1 forwards;
 }
 
-@keyframes dashesBackThird {
+@keyframes thirddashBacktoOriginalPosition {
   0% {
     transform: translateY(-17px);
   }
@@ -211,7 +211,7 @@ h1 {
 }
 
 .welcomeMessage > h4 {
-  color: var(--secondary-color);
+  color: var(--shadow-color);
   font-size: 1.5vh;
 }
 
@@ -245,7 +245,7 @@ h1 {
 }
 
 .openMenuWindow a h2:hover {
-  background-color: var(--trenary-color);
+  background-color: var(--accent-color);
 }
 
 h2 {
@@ -277,7 +277,7 @@ h2 {
 
 @keyframes slideDown {
   100% {
-    transform: translateY(-100vh);
+    transform: translateY(100vh);
   }
 }
 
@@ -287,7 +287,8 @@ h2 {
   display: grid;
   grid-template-columns: var(--grid-columns);
   grid-template-rows: 15% 10% auto;
-  background-color: var(--trenary-color);
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .projectsPageContainer h2,
@@ -299,6 +300,7 @@ h2 {
 
 .projectsFilters {
   grid-area: 2/2 / span 1 / span 1;
+  color: var(--shadow-color);
 }
 
 input:nth-child(2),
@@ -320,36 +322,25 @@ input:nth-child(3) {
   align-items: center;
 }
 
-.projectsCardFront {
-  background: black;
-  transition: background-image 1s, background-position 1s;
-
-  background-size: 200% auto;
-  -webkit-text-fill-color: transparent;
+.projectFrontImage {
+  width: -webkit-fill-available;
+  object-fit: contain;
+  object-position: center;
+  transition: opacity 1s;
+  border-radius: inherit;
 }
 
-.projectsCardFront:hover {
-  background-image: linear-gradient(
-    to left,
-    black 20%,
-    var(--accent-color) 10%,
-    var(--accent-color) 10%,
-    black 80%
-  );
-  background-position: -240% center;
+.projectsCard:hover {
+  opacity: 0.5;
 }
 
 .cardBackandFront {
-  transform-style: preserve-3d;
-  perspective: 1000px;
   height: 300px;
   width: 250px;
-  box-shadow: 1px 1px 1px 1px var(--secondary-color);
   border-radius: var(--border-15);
-  margin: 0 0 2vh 0;
 }
 
-.typeOfProject {
+.projectsName {
   background-color: var(--accent-color);
   color: white;
   width: 150px;
@@ -358,13 +349,14 @@ input:nth-child(3) {
   position: absolute;
   transform: rotateY(90deg);
   z-index: 10;
+  text-align: center;
 }
 
 .rotateTypeOfproject {
   transition: transform 0.5s;
   perspective: 1000px;
   transform-style: preserve-3d;
-  animation: rotateBackCircle 0.5s 0.1s ease-in forwards 1;
+  animation: rotateBackCircle 0.5s ease-in forwards 1;
 }
 
 @keyframes rotateBackCircle {
@@ -373,7 +365,7 @@ input:nth-child(3) {
   }
 }
 
-.projectsName {
+.typeOfProject {
   margin: 1vh 0;
 }
 
@@ -388,6 +380,7 @@ a.d-flex-centered {
 
 .d-flex-centered h4 {
   margin: 0 1vh;
+  color: #7997c4;
 }
 
 /* ABOUT ME */
@@ -438,7 +431,7 @@ footer {
   display: grid;
   grid-template-columns: var(--grid-columns);
   grid-template-rows: max-content;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   height: max-content;
   margin-top: auto;
   height: 15vh;
