@@ -52,16 +52,7 @@
 
 .menuBtnContainer:hover {
   filter: var(--shadow);
-}
-
-.menuBtnContainer.clicked {
-  animation: rotateButton 0.3s linear forwards 1;
-  justify-content: center;
-}
-
-.menuBtnContainer.unclicked {
-  animation: rotateButtonBack 0.3s linear forwards 1;
-  justify-content: space-evenly;
+  position: absolute;
 }
 
 @keyframes rotateButton {
@@ -81,7 +72,50 @@
   background-color: var(--secondary-color);
   height: 5px;
   border-radius: var(--border-15);
-  transform-origin: center;
+  transform-origin: right;
+  transition: position 0.5s;
+  visibility: visible;
+  animation: dashesBack 1s ease-in-out 1 forwards;
+}
+
+.dash:first-child.clicked {
+  animation: positionAblsolute 0.5s ease-in-out 1 forwards;
+}
+
+@keyframes positionAblsolute {
+  70% {
+    transform: translateY(17px);
+  }
+
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+
+.dash:nth-child(3).clicked {
+  animation: thirDash 0.5s ease-in-out 1 forwards;
+}
+
+@keyframes thirDash {
+  70% {
+    transform: translateY(-17px);
+  }
+
+  100% {
+    transform: rotate(45deg) translate(-4px, -2px);
+  }
+}
+
+.dash:nth-child(2).clicked {
+  animation: middleDash 0.3s ease-in-out 1 forwards;
+}
+
+@keyframes middleDash {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
 }
 
 .welcomeMessage {
@@ -228,18 +262,6 @@ h2 {
   100% {
     transform: translateY(-100vh);
   }
-}
-
-.dash:first-child.clicked {
-  transform: rotate(-45deg) translate(0px, 1.8px);
-}
-
-.dash:nth-child(3).clicked {
-  transform: rotate(45deg) translate(0px, -1.8px);
-}
-
-.dash:nth-child(2).clicked {
-  display: none;
 }
 
 .projectsPageContainer,
