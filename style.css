@@ -10,7 +10,6 @@
 :root {
   --primary-color: #143140;
   --secondary-color: #296180;
-  --trenary-color: cornsilk;
   --accent-color: #48ade2;
   --grid-columns: 10% 80% 10%;
   --shadow-color: #787f84c4;
@@ -324,8 +323,7 @@ input:nth-child(3) {
 }
 
 .projectsCardFront {
-  background: white;
-  transition: background-image 1s, background-position 1s;
+  /* background: white; */
 
   background-size: 200% auto;
   -webkit-text-fill-color: transparent;
@@ -336,17 +334,17 @@ input:nth-child(3) {
   object-fit: contain;
   object-position: center;
   border-radius: inherit;
+  transition: opacity 1s;
 }
 
-.projectsCardFront:hover {
-  background-image: linear-gradient(
-    to left,
-    white 20%,
-    var(--accent-color) 10%,
-    var(--accent-color) 10%,
-    white 80%
-  );
-  background-position: -240% center;
+.projectFrontImage:hover {
+  opacity: 0.5;
+}
+
+.projectNameContainer {
+  position: absolute;
+  /* background-color: white; */
+  /* z-index: 10; */
 }
 
 .cardBackandFront {
@@ -354,9 +352,9 @@ input:nth-child(3) {
   perspective: 1000px;
   height: 300px;
   width: 250px;
-  box-shadow: 1px 1px 1px 1px var(--secondary-color);
+  /* box-shadow: 1px 1px 1px 1px var(--secondary-color); */
   border-radius: var(--border-15);
-  margin: 0 0 2vh 0;
+  /* margin: 0 0 2vh 0; */
 }
 
 .typeOfProject {
@@ -368,6 +366,7 @@ input:nth-child(3) {
   position: absolute;
   transform: rotateY(90deg);
   z-index: 10;
+  text-align: center;
 }
 
 .rotateTypeOfproject {
