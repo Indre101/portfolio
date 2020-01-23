@@ -22,18 +22,22 @@ menuButton.onclick = function () {
   menuIconDashes.forEach(dash => {
     setTimeout(() => {
       toggleClassClicked(dash);
+      dash.classList.remove("unclicked")
     }, 150);
   });
 
-
   animateMenuToslideIn(openMenuWindow);
-  removeUNClickedClass(menuButton);
-  addClickedClass(menuButton);
-
 
   if (i == 2) {
-    addUNClickedClass(menuButton)
-    removeClickedClass(menuButton)
+
+    menuIconDashes.forEach(dash => {
+      setTimeout(() => {
+        dash.classList.add("unclicked")
+      }, 150);
+    });
+
+
+
     animateMenuToslideOut(openMenuWindow)
     i = 0;
   }
@@ -56,25 +60,6 @@ function animateMenuToslideOut(elementToAnimate) {
   }, 500);
 }
 
-
-function addClickedClass(elementToAddTheClass) {
-  elementToAddTheClass.classList.add("clicked");
-}
-
-
-function removeClickedClass(elementToAddTheClass) {
-  elementToAddTheClass.classList.remove("clicked");
-}
-
-
-function addUNClickedClass(elementToAddTheClass) {
-  elementToAddTheClass.classList.add("unclicked");
-}
-
-
-function removeUNClickedClass(elementToAddTheClass) {
-  elementToAddTheClass.classList.remove("unclicked");
-}
 
 
 function toggleClassClicked(elementToAddTheClass) {

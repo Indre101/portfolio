@@ -55,18 +55,6 @@
   position: absolute;
 }
 
-@keyframes rotateButton {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotateButtonBack {
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-
 .dash {
   width: 40px;
   background-color: var(--secondary-color);
@@ -75,8 +63,38 @@
   transform-origin: right;
   transition: position 0.5s;
   visibility: visible;
-  animation: dashesBack 1s ease-in-out 1 forwards;
+  /* animation: dashesBack 1s ease-in-out 1 forwards; */
 }
+
+/* Unclicked */
+.dash:first-child.unclicked {
+  animation: dashesBack 0.5s ease-in-out 1 forwards;
+}
+
+@keyframes dashesBack {
+  0% {
+    transform: translateY(17px);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.dash:nth-child(3).unclicked {
+  animation: dashesBackThird 0.5s ease-in-out 1 forwards;
+}
+
+@keyframes dashesBackThird {
+  0% {
+    transform: translateY(-17px);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+/* Unlcicked */
 
 .dash:first-child.clicked {
   animation: positionAblsolute 0.5s ease-in-out 1 forwards;
