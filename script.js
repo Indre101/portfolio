@@ -1,19 +1,31 @@
 const menuButton = document.getElementById("menuButton");
 const openMenuWindow = document.getElementById("openMenuWindow");
 const menuIconDashes = document.querySelectorAll(".dash");
-const projectCardFront = document.querySelector(".cardBackandFront");
+const projectsCard = document.querySelector(".projectsCard");
 const projectsName = document.querySelector(".projectsName")
+const projectFrontImage = document.querySelector(".projectFrontImage");
 
 
-projectCardFront.onmouseover = function () {
-  projectsName.classList.add("rotateTypeOfproject")
-  console.log("object");
+projectsCard.onmouseover = function () {
+  projectsName.classList.add("rotateElementToBeVisible")
+  projectsName.classList.remove("rotateElementToBeNotVisible")
+
+  projectFrontImage.classList.remove("opacityToOne")
+  projectFrontImage.classList.add("projectFrontImageOpacity")
 }
 
 
-projectCardFront.onmouseout = function () {
-  projectsName.classList.remove("rotateTypeOfproject")
+projectsCard.onmouseout = function () {
+  projectsName.classList.remove("rotateElementToBeVisible")
+  projectFrontImage.classList.remove("projectFrontImageOpacity")
+  projectsName.classList.add("rotateElementToBeNotVisible")
+  projectFrontImage.classList.add("opacityToOne")
+
+
 }
+
+
+
 
 let i = 0;
 
