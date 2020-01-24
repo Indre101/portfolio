@@ -15,6 +15,7 @@
   --shadow-color: #93a5b2c4;
   --border-15: 15px;
   --shadow: drop-shadow(4px 4px 1px #143140cf);
+  --box-shadow: 4px 4px 1px #143140cf;
 }
 
 .d-flex-centered {
@@ -328,7 +329,7 @@ input:nth-child(3) {
   object-position: center;
   transition: opacity 1s;
   border-radius: inherit;
-  filter: var(--shadow);
+  box-shadow: var(--box-shadow);
 }
 
 .projectFrontImageOpacity {
@@ -367,7 +368,7 @@ input:nth-child(3) {
   transition: transform 0.5s;
   perspective: 1000px;
   transform-style: preserve-3d;
-  filter: var(--shadow);
+  box-shadow: var(--box-shadow);
 }
 
 .rotateElementToBeVisible {
