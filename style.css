@@ -285,7 +285,8 @@ h2 {
 }
 
 .projectsPageContainer,
-.aboutMePageContainer {
+.aboutMePageContainer,
+.projectPage {
   min-height: 100vh;
   display: grid;
   grid-template-columns: var(--grid-columns);
@@ -478,3 +479,91 @@ footer h4 {
   grid-area: 1/2 / span 1 / span 1;
   margin: 2vh 0 1vh 0;
 }
+
+/* Projects page */
+
+.projectPage h1 {
+  grid-area: 1/1 / span 1 / span 3;
+  align-self: center;
+  justify-self: center;
+  animation: none;
+  color: white;
+  -webkit-text-fill-color: white;
+}
+
+.projectPage {
+  grid-template-rows: 15% auto;
+  background-image: -webkit-linear-gradient(
+    60deg,
+    white 50%,
+    var(--primary-color) 50%
+  );
+  background-color: #fff;
+  background-repeat: no-repeat;
+}
+
+.projectImageSliderContaier {
+  grid-area: 2/1 / span 1 / span 3;
+  display: flex;
+  width: 70vw;
+  height: fit-content;
+  margin: 0 auto;
+}
+
+.imageAndText {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.arrows {
+  width: 4%;
+  object-fit: contain;
+}
+
+.imageIntheCarousel {
+  grid-area: 1/2 / span 1 / span 2;
+  border-radius: 15px;
+  background: url(./images/photos/project-images/chad.png);
+  /* background: red; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-self: left;
+  width: 40vw;
+  height: 55vh;
+}
+
+.changeWidth {
+  animation: changeWidths 1s ease-in-out forwards 1;
+}
+
+@keyframes changeWidths {
+  0% {
+    width: 0vw;
+  }
+
+  80% {
+    width: 35vw;
+  }
+
+  100% {
+    width: 35vw;
+  }
+}
+
+.textCaption {
+  grid-area: 1/1 / span 1 / span 2;
+  color: black;
+  height: 20vh;
+  border: 1px solid;
+  z-index: 10;
+  justify-self: left;
+  align-self: center;
+  border-radius: 15px;
+  background-color: white;
+}
+
+/* .textCaptionSecond {
+  width: 0;
+  background-color: white;
+} */

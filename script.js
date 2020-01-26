@@ -5,7 +5,7 @@ const projectsCard = document.querySelector(".projectsCard");
 const projectsName = document.querySelector(".projectsName")
 const projectFrontImage = document.querySelector(".projectFrontImage");
 
-
+console.log(projectsCard);
 projectsCard.onmouseover = function () {
   projectsName.classList.add("rotateElementToBeVisible")
   projectsName.classList.remove("rotateElementToBeNotVisible")
@@ -85,7 +85,7 @@ function toggleClassClicked(elementToAddTheClass) {
 
 
 // Fetching the projects data
-fetch("projects.json").then(res =>
-  res.json()).then(data => {
-  data[0].projects.forEach(e => console.log(e.projectName))
-})
+// fetch("projects.json").then(res =>
+//   res.json()).then(data => {
+//   data[0].projects.forEach(e => console.log(e.projectName))
+// })
