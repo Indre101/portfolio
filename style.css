@@ -7,12 +7,14 @@
   font-family: "Roboto", sans-serif;
 }
 
+/* #055075; */
+/* #93a5b2c4 */
 :root {
-  --primary-color: #055075;
+  --primary-color: #4c91b180;
   --secondary-color: #296180;
   --accent-color: #48ade2;
   --grid-columns: 10% 80% 10%;
-  --shadow-color: #93a5b2c4;
+  --shadow-color: #333333d9;
   --border-15: 15px;
   --shadow: drop-shadow(4px 4px 1px #143140cf);
   --box-shadow: 4px 4px 1px #143140cf;
@@ -396,6 +398,7 @@ input:nth-child(3) {
 
 .typeOfProject {
   margin: 1vh 0;
+  color: var(--shadow-color);
 }
 
 .linkIcon {
