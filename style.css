@@ -524,7 +524,7 @@ footer h4 {
 .imageIntheCarousel {
   grid-area: 1/2 / span 1 / span 2;
   border-radius: 15px;
-  /* background: url(./images/photos/project-images/chad.png); */
+  background: url(./images/photos/project-images/chad.png);
   /* background: red; */
   background-size: cover;
   background-repeat: no-repeat;
@@ -560,10 +560,10 @@ footer h4 {
   justify-self: left;
   align-self: center;
   border-radius: 15px;
-  background-color: blue;
-}
-
-.textCaptionSecond {
-  width: 0;
   background-color: white;
 }
+
+/* .textCaptionSecond {
+  width: 0;
+  background-color: white;
+} */
