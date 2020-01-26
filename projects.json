@@ -1,8 +1,29 @@
 [{
   "category": "School",
   "projects": [{
-    "project name": "Adventures of Chad",
-    "project link": "https://indre101.github.io/Adventures_of_chad/",
+    "projectName": "Adventures of Chad",
+    "projectLink": "https://indre101.github.io/Adventures_of_chad/",
+    "typeOfProject": "Animation/Game",
+    "individualOrGroup": ["This was individual project, so all parts are done by me"],
+    "myResponsibilities": ["Character design", "story developer", "coding"],
+    "projectsGoal": "Create and code an animated story",
+    "tools": ["JS", "HTML", "CSS", "Adobe Illustrator"],
+    "aboutTheProject": "This project was heavily focused on the animation and developing a story and character in a certain style, that was chosen",
+    "factsAboutTheProject": ["Wrote a story about the made up character",
+      "Drew a story board with planned stages of the story",
+      "Filled out work sheet about the character's appearance, psichology etc.",
+      "Chose a graphic style that I will use for the drawings style
+      Created a style tile, that focused on the chosen style specifics ", 
+      "Drew the character and filled out character sheet, model sheet and pose sheet",
+      "Drew all the reuired sprite sheets and backgrounds using Adobe Illustrator"
+      "Animated the story using HTML, CSS and JS"
+    ],
+
+    "featuredImage": "chad.png",
+
+    "galery": [],
+
+    "other": []
 
   }]
 }]

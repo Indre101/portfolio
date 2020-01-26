@@ -85,7 +85,7 @@ function toggleClassClicked(elementToAddTheClass) {
 
 
 // Fetching the projects data
-// fetch("projects.json").then(res =>
-//   res.json()).then(data => {
-//   console.log(data[0])
-// })
+fetch("projects.json").then(res =>
+  res.json()).then(data => {
+  data[0].projects.forEach(e => console.log(e.projectName))
+})
