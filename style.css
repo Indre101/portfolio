@@ -478,3 +478,10 @@ footer h4 {
   grid-area: 1/2 / span 1 / span 1;
   margin: 2vh 0 1vh 0;
 }
+
+/* Projects page */
+
+.arrows {
+  width: 10vw;
+  object-fit: contain;
+}
