@@ -511,6 +511,7 @@ footer h4 {
 }
 
 .imageAndText {
+  width: 80%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -522,7 +523,25 @@ footer h4 {
 
 .imageIntheCarousel {
   grid-area: 1/2 / span 1 / span 2;
-  width: 80%;
+  border-radius: 15px;
+  background: url(./images/photos/project-images/chad.png);
+  /* background: red; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 40vw;
+  height: 55vh;
+  animation: imageChange 1s forwards linear 2;
+}
+
+
+@keyframes imageChange {
+  0% {
+    width: 0vw;
+  }
+
+  100% {
+    width: 35vw;
+  }
 }
 
 .text {
