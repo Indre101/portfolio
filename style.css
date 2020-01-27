@@ -511,10 +511,19 @@ footer h4 {
   margin: 0 auto;
 }
 
-.imageAndText {
-  width: 80%;
+.projectImages {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  grid-template-columns: repeat(3, 33%);
+}
+
+.imageAndTextCaption {
+  width: 20vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
 }
 
 .arrowsContainer {
@@ -535,14 +544,10 @@ footer h4 {
 
 .imageIntheCarousel {
   grid-area: 1/2 / span 1 / span 2;
-  border-radius: 15px;
-  /* background: red; */
+  border-radius: 15px 15px 0 0;
   object-fit: contain;
-  justify-self: left;
   object-position: left;
-
-  width: 40vw;
-  height: 55vh;
+  width: 100%;
 }
 
 .changeWidth {
@@ -554,23 +559,24 @@ footer h4 {
     width: 0vw;
   }
 
-  80% {
+  /* 80% {
     width: 35vw;
   }
 
   100% {
     width: 35vw;
-  }
+  } */
 }
 
 .textCaption {
   grid-area: 1/1 / span 1 / span 2;
   color: black;
-  height: 20vh;
+  height: 7vh;
+  width: 100%;
   z-index: 10;
   justify-self: left;
   align-self: center;
-  border-radius: 15px;
+  border-radius: 0 0 15px 15px;
   background-color: beige;
 }
 
