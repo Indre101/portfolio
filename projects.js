@@ -1,46 +1,63 @@
 // PROJECTS PAGE
 
-const textCaption = document.querySelector(".textCaption")
-const imageIntheCarousel = document.querySelector(".imageIntheCarousel")
+const textCaption = document.querySelector(".textCaption");
+const imageIntheCarousel = document.querySelector(".imageIntheCarousel");
+const imageAndTextCaption = document.querySelectorAll(".imageAndTextCaption");
+const imageAndTextCaptionConvertedArray = Array.from(imageAndTextCaption);
+const projectImagesAndCaptions = document.querySelector(".projectImages");
 
-addAnimationToTheActiveSlide(textCaption, imageIntheCarousel)
+let htmlStyles = window.getComputedStyle(document.querySelector("html"));
+let colNum = parseInt(htmlStyles.getPropertyValue("--colNum"));
 
-function addAnimationToTheActiveSlide(text, image) {
-  text.classList.add("changeWidth");
-  image.classList.add("changeWidth");
-}
+window.onload = function() {
+  document.documentElement.style.setProperty(
+    "--colNum",
+    imageAndTextCaption.length
+  );
+};
 
+// const previousArrow = document.querySelector(".previousArrow");
+// const nextArrow = document.querySelector(".nextArrow");
 
+// const activeProjectSlide = () => {
+//   let activeSlide;
+//   imageAndTextCaption.forEach(element => {
+//     if (element.classList.contains("active")) {
+//       activeElement = element;
+//     }
+//   });
+//   return activeElement;
+// };
 
-// const RandomColorBlueOrOrange = (colorPlaceInColorWheel) => {
+// let activeSlide = activeProjectSlide();
+// let clickCount = imageAndTextCaptionConvertedArray.indexOf(activeSlide);
 
-//   const color = `rgba(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*155)}, ${colorPlaceInColorWheel})`;
-//   return color
+// nextArrow.onclick = function() {
+//   clickCount++;
+//   console.log(clickCount);
+//   imageAndTextCaption[clickCount].classList.add("active");
+//   if (!findPreviousSibling(clickCount) || !findNextSibling(clickCount)) {
+//     return false;
+//   } else if (findPreviousSibling(clickCount)) {
+//     console.log("true");
+//   } else if (findNextSibling(clickCount)) {
+//     console.log("true");
+//   }
 
+//   // let previousSibling = findPreviousSibling(clickCount);
+//   // let nextSibling = findNextSibling(clickCount);
+// };
+
+// function findPreviousSibling(activeSlideIndex) {
+//   let previousSiblings =
+//     imageAndTextCaptionConvertedArray[activeSlideIndex].previousElementSibling;
+//   previousSiblings.classList.add("right-Slide");
+//   return previousSiblings;
 // }
 
-// changeImageAndTextInTheImageSlider(textCaption, imageIntheCarousel)
-
-// function changeImageAndTextInTheImageSlider(text, image) {
-
-//   text.classList.add("changeWidth");
-//   image.classList.add("changeWidth");
-//   // text.style.backgroundColor = RandomColorBlueOrOrange(210);
-//   text.addEventListener("webkitAnimationEnd", changeImageCaption)
-//   image.addEventListener("webkitAnimationEnd", changeTheImage)
-
-// }
-
-// function changeImageCaption(e) {
-
-//   // e.target.style.animationIterationCount = 2;
-//   e.target.textContent = "Image name";
-//   e.target.classList.add("textCaptionSecond");
-// }
-
-// function changeTheImage(e) {
-
-//   // e.target.style.animationIterationCount = 2;
-//   e.target.style.backgroundImage = "url('./images/photos/project-images/chad.png')"
-
+// function findNextSibling(activeSlideIndex) {
+//   let previousSiblings =
+//     imageAndTextCaptionConvertedArray[activeSlideIndex].nextElementSibling;
+//   previousSiblings.classList.add("left-Slide");
+//   return previousSiblings;
 // }
