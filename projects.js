@@ -18,4 +18,9 @@ window.onload = function () {
 
 }
 
-console.log(imageAndTextCaption.length);
+
+const previousArrow = document.querySelector(".")
+
+function addClassActive(elemet) {
+
+}
