@@ -522,10 +522,14 @@ footer h4 {
 
 .imageAndTextCaption {
   width: 20vw;
-
+  margin: 5vw 0;
   display: flex;
+  border-radius: var(--border-15);
+  box-shadow: var(--box-shadow);
   flex-direction: column;
   justify-self: center;
+  transform-style: preserve-3d;
+  perspective: 3000px;
 }
 
 .arrowsContainer {
@@ -591,3 +595,24 @@ footer h4 {
   width: 0;
   background-color: white;
 } */
+
+/*     transform-origin: left;
+    transform: rotateY(-60deg) skewY(-11deg) translateZ(1vw);
+    box-shadow: 1px 1px 4px black; */
+
+/*     transform-origin: right;
+    transform: rotateY(60deg) skewY(11deg) translateZ(1vw);
+    box-shadow: 1px 1px 4px black;
+     */
+
+.left-Slide {
+  transform-origin: left;
+  transform: rotateY(-60deg) skewY(-11deg) translateZ(1vw);
+  box-shadow: 1px 1px 4px black;
+}
+
+.right-Slide {
+  transform-origin: right;
+  transform: rotateY(60deg) skewY(11deg) translateZ(1vw);
+  box-shadow: 1px 1px 4px black;
+}

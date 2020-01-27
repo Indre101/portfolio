@@ -9,12 +9,7 @@ const projectImagesAndCaptions = document.querySelector(".projectImages")
 let htmlStyles = window.getComputedStyle(document.querySelector("html"));
 let colNum = parseInt(htmlStyles.getPropertyValue("--colNum"))
 
-addAnimationToTheActiveSlide(textCaption, imageIntheCarousel)
 
-function addAnimationToTheActiveSlide(text, image) {
-  text.classList.add("changeWidth");
-  image.classList.add("changeWidth");
-}
 
 
 
