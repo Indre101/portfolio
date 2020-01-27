@@ -652,10 +652,19 @@ footer h4 {
     transform: translateX(-108%);
   }
 
+  50% {
+    transform: translateX(-108%) rotateY(-50deg) skewY(11deg);
+  }
+
+
+  80% {
+    transform: translateX(-208%);
+  }
+
 
 
   100% {
-    transform: translateX(-108%) rotateY(-50deg) skewY(11deg);
+    transform: translateX(-208%) rotateY(-50deg) skewY(-11deg);
   }
 
 }
@@ -668,8 +677,16 @@ footer h4 {
 
 
 
-  100% {
+  50% {
     transform: translateX(-130%) rotateY(-50deg) skewY(-11deg);
+  }
+
+  80% {
+    transform: translateX(-208%);
+  }
+
+  100% {
+    transform: translateX(-230%) rotateY(-50deg) skewY(11deg);
   }
 
 }
