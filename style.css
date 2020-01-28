@@ -523,27 +523,17 @@ footer h4 {
   overflow: hidden;
   /* animation: moveOver 5s linear forwards 1; */
   transition: transform 1s ease-in-out;
+  /* animation: moveOver 5s linear forwards 1; */
 
-  /* position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0); */
+
 
 }
 
-/* 
-.projectImages>div {
-
-  transform: rotateY(50deg) skewY(11deg) translateZ(-4vw);
-  animation: moveSlideshow 2s linear infinite;
-}
-
-@keyframes moveSlideshow {
+@keyframes moveOver {
   100% {
-    transform: translateX(-66.6666%) rotateY(50deg) skewY(11deg) translateZ(-4vw);
+    transform: translateX(-100vw);
   }
-} */
-
-
+}
 
 
 
@@ -560,21 +550,17 @@ div.imageAndTextCaption {
   background-color: white;
   cursor: pointer;
   transform-origin: right;
-  transform: rotateY(50deg) skewY(11deg) translateZ(-4vw);
-  animation: moveOver 5s linear forwards 1;
+  transition: transform 1s ease-in-out;
+
+  transform: rotateY(50deg) skewY(11deg);
 
 }
 
-@keyframes moveOver {
-  100% {
-    transform: translateX(-100vw);
-  }
-}
 
 
 div.imageAndTextCaption:hover {
   transform: scale(1.1);
-
+  z-index: 100;
 }
 
 .arrowsContainer {
@@ -613,13 +599,7 @@ div.imageAndTextCaption:hover {
     width: 0vw;
   }
 
-  /* 80% {
-    width: 35vw;
-  }
 
-  100% {
-    width: 35vw;
-  } */
 }
 
 .textCaption {

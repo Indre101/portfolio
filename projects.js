@@ -6,84 +6,58 @@ const imageAndTextCaption = document.querySelectorAll(".imageAndTextCaption");
 const imageAndTextCaptionConvertedArray = Array.from(imageAndTextCaption);
 const projectImagesAndCaptions = document.querySelector(".projectImages");
 
-projectImagesAndCaptions.style.setProperty(" --colNum", "#YOURCOLOR");
+let html = document.querySelector("html");
+html.style.setProperty("--colNum", imageAndTextCaption.length);
+
 const numberOfSlidesShown = 5;
 const oneimageAndTextCaption = document.querySelector(".imageAndTextCaption");
 const style = window.getComputedStyle(oneimageAndTextCaption);
-const widthOfSlide = style.getPropertyValue("width");
-const restofTheSlides = imageAndTextCaption.length - numberOfSlidesShown;
-console.log(restofTheSlides);
+const widthOfOneSlide = parseInt(style.getPropertyValue("width"), 10);
 
-// setInterval(() => {
-//   numb++;
-//   projectImagesAndCaptions.style.transform = `translateX(-${numb}vw)`;
-// }, 500);
+projectImagesAndCaptions.style.width = `${5 * widthOfOneSlide}px`;
+const styleOfprojectImagesAndCaptions = window.getComputedStyle(
+  projectImagesAndCaptions
+);
+const widthOfTheSlider = parseInt(
+  styleOfprojectImagesAndCaptions.getPropertyValue("width"),
+  10
+);
 
-// function animate({ duration, timing, draw }) {
-//   let start = performance.now();
+const restofTheSlides = imageAndTextCaption.length - numberOfSlidesShown + 1;
+const allSlides = (imageAndTextCaption.length + 1) * restofTheSlides;
+const sideLeft = widthOfTheSlider - restofTheSlides * widthOfOneSlide;
 
-//   console.log(start);
-//   requestAnimationFrame(animate());
-//   // timeFraction goes from 0 to 1
-//   let timeFraction = (time - start) / duration;
-//   if (timeFraction > 10000) timeFraction = 1000;
+console.log(sideLeft);
 
-//   // calculate the current animation state
-//   let progress = timing(timeFraction);
+projectImagesAndCaptions.animate(
+  [
+    { transform: `translateX(0px)`, offset: 0 },
+    { transform: `translateX(${sideLeft}px)`, offset: 0 },
 
-//   draw(progress); // draw it
+    { transform: `translateX(${sideLeft * -1}px)`, offset: 1 }
+  ],
+  {
+    duration: 20000, //milliseconds
+    easing: "ease-in-out", //'linear', a bezier curve, etc.
+    delay: 10, //milliseconds
+    iterations: Infinity, //or a number
+    direction: "alternate", //'normal', 'reverse', etc.
+    fill: "forwards" //'backwards', 'both', 'none', 'auto'
+  }
+);
 
-//   if (timeFraction < 1) {
-//     requestAnimationFrame(animate);
+// function myMove(elem) {
+//   var pos = 0;
+//   var id = setInterval(frame, 4000);
+//   function frame() {
+//     if (pos === sideLeft) {
+//       clearInterval(id);
+//     } else {
+//       pos += widthOfSlide;
+//       elem.style.transform = `translateX(-${pos}px) rotateY(50deg) skewY(11deg)`;
+//     }
 //   }
 // }
 
-// imageAndTextCaption.forEach(e => {
-//   animate({
-//     duration: 1000,
-//     timing(timeFraction) {
-//       return timeFraction;
-//     },
-//     draw(progress) {
-//       e.style.transform = `translateX(-${progress}%) rotateY(50deg) skewY(11deg) translateZ(-4vw)`;
-//     }
-//   });
-// });
-
-// let myReq;
-
-// let numb = 1;
-
-// function animate({ timing, transformSlide, duration }) {
-//   let start = performance.now();
-//   numb++;
-//   requestAnimationFrame(function animate(time) {
-//     let timeFraction = (time - start) / duration;
-//     if (timeFraction > 1) timeFraction = 1;
-//     let progress = timing(timeFraction);
-//     transformSlide(); // draw it
-//     if (timeFraction < 1) requestAnimationFrame(animate);
-//   });
-// }
-
-// animate({
-//   timing: function(t) {
-//     return t;
-//   },
-//   transformSlide() {
-//     projectImagesAndCaptions.style.transform = `translateX(-${numb}vw)`;
-//   },
-//   duration: 1500
-// });
-
-// function animate({ timing, draw, duration }) {
-//   const start = performance.now();
-//   console.log("object");
-//   requestAnimationFrame(function animate(time) {
-//     let timeFraction = (time - start) / duration;
-//     if (timeFraction > 1) timeFraction = 1;
-//     let progress = timing(timeFraction);
-//     draw(progress); // draw it
-//     if (timeFraction < 1) requestAnimationFrame(animate);
-//   });
-// }
+// // myMove(projectImagesAndCaptions);
+// imageAndTextCaption.forEach(e => myMove(e));
