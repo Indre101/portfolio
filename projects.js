@@ -6,58 +6,61 @@ const imageAndTextCaption = document.querySelectorAll(".imageAndTextCaption");
 const imageAndTextCaptionConvertedArray = Array.from(imageAndTextCaption);
 const projectImagesAndCaptions = document.querySelector(".projectImages");
 
-let htmlStyles = window.getComputedStyle(document.querySelector("html"));
-let colNum = parseInt(htmlStyles.getPropertyValue("--colNum"));
+let html = document.querySelector("html");
+html.style.setProperty("--colNum", imageAndTextCaption.length);
 
-window.onload = function() {
-  document.documentElement.style.setProperty(
-    "--colNum",
-    imageAndTextCaption.length
-  );
-};
+const numberOfSlidesShown = 5;
+const oneimageAndTextCaption = document.querySelector(".imageAndTextCaption");
+const style = window.getComputedStyle(oneimageAndTextCaption);
+const widthOfOneSlide = parseInt(style.getPropertyValue("width"), 10);
 
-// const previousArrow = document.querySelector(".previousArrow");
-// const nextArrow = document.querySelector(".nextArrow");
+projectImagesAndCaptions.style.width = `${5 * widthOfOneSlide}px`;
+const styleOfprojectImagesAndCaptions = window.getComputedStyle(
+  projectImagesAndCaptions
+);
+const widthOfTheSlider = parseInt(
+  styleOfprojectImagesAndCaptions.getPropertyValue("width"),
+  10
+);
 
-// const activeProjectSlide = () => {
-//   let activeSlide;
-//   imageAndTextCaption.forEach(element => {
-//     if (element.classList.contains("active")) {
-//       activeElement = element;
+const restofTheSlides = imageAndTextCaption.length - numberOfSlidesShown + 1;
+const allSlides = (imageAndTextCaption.length + 1) * restofTheSlides;
+const sideLeft = restofTheSlides * widthOfOneSlide - widthOfTheSlider;
+
+console.log(sideLeft);
+
+function myMove(elem) {
+  var pos = 0;
+  var id = setInterval(frame, 4000);
+  function frame() {
+    if (pos === sideLeft) {
+      clearInterval(id);
+    } else {
+      pos += widthOfOneSlide;
+      elem.style.transform = `translateX(-${pos}px) rotateY(50deg) skewY(11deg)`;
+    }
+  }
+}
+
+imageAndTextCaption.forEach(e => myMove(e));
+
+// // myMove(projectImagesAndCaptions);
+
+// imageAndTextCaption.forEach(e => {
+//   e.animate(
+//     [
+//       { transform: `translateX(0px)`, offset: 0 },
+//       { transform: `translateX(${sideLeft}px)`, offset: 0 },
+
+//       { transform: `translateX(${sideLeft * -1}px)`, offset: 1 }
+//     ],
+//     {
+//       duration: 20000, //milliseconds
+//       easing: "ease-in-out", //'linear', a bezier curve, etc.
+//       delay: 10, //milliseconds
+//       iterations: Infinity, //or a number
+//       direction: "alternate", //'normal', 'reverse', etc.
+//       fill: "forwards" //'backwards', 'both', 'none', 'auto'
 //     }
-//   });
-//   return activeElement;
-// };
-
-// let activeSlide = activeProjectSlide();
-// let clickCount = imageAndTextCaptionConvertedArray.indexOf(activeSlide);
-
-// nextArrow.onclick = function() {
-//   clickCount++;
-//   console.log(clickCount);
-//   imageAndTextCaption[clickCount].classList.add("active");
-//   if (!findPreviousSibling(clickCount) || !findNextSibling(clickCount)) {
-//     return false;
-//   } else if (findPreviousSibling(clickCount)) {
-//     console.log("true");
-//   } else if (findNextSibling(clickCount)) {
-//     console.log("true");
-//   }
-
-//   // let previousSibling = findPreviousSibling(clickCount);
-//   // let nextSibling = findNextSibling(clickCount);
-// };
-
-// function findPreviousSibling(activeSlideIndex) {
-//   let previousSiblings =
-//     imageAndTextCaptionConvertedArray[activeSlideIndex].previousElementSibling;
-//   previousSiblings.classList.add("right-Slide");
-//   return previousSiblings;
-// }
-
-// function findNextSibling(activeSlideIndex) {
-//   let previousSiblings =
-//     imageAndTextCaptionConvertedArray[activeSlideIndex].nextElementSibling;
-//   previousSiblings.classList.add("left-Slide");
-//   return previousSiblings;
-// }
+//   );
+// });
