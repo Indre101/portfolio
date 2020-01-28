@@ -534,9 +534,11 @@ div.imageAndTextCaption {
   perspective: 3000px;
   background-color: white;
   cursor: pointer;
-  transition: transform .1s linear;
   transform-origin: right;
+  transition: transform 1s ease-in-out;
+
   transform: rotateY(50deg) skewY(11deg) translateZ(-4vw);
+
   /* animation: moveSlide 1s linear forwards 1; */
 
 }

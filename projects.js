@@ -44,20 +44,19 @@ let myReq;
 function repeatOften() {
   numb++;
   imageAndTextCaption.forEach(e => {
-    console.log(numb);
     setTimeout(() => {
-      e.style.transform = `translateX(-${numb}%)`;
-    }, 1000);
+      e.style.transform = `translateX(-${numb}vw) rotateY(50deg) skewY(11deg) translateZ(-4vw)`;
+    }, 3000);
   });
-  // console.log("object");
   myReq = requestAnimationFrame(repeatOften);
 }
-// requestAnimationFrame(repeatOften);
-myReq = requestAnimationFrame(repeatOften);
+
+setInterval(() => {
+  myReq = requestAnimationFrame(repeatOften);
+}, 3000);
 
 document.querySelector("button").addEventListener("click", cancelAnimatio);
 
 function cancelAnimatio() {
-  console.log("kæløæø");
   cancelAnimationFrame(myReq);
 }
