@@ -512,6 +512,7 @@ footer h4 {
   width: 70vw;
   height: fit-content;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .projectImages {
@@ -520,6 +521,16 @@ footer h4 {
   align-items: center;
   grid-template-columns: repeat(var(--colNum), 25%);
   overflow: hidden;
+  animation: moveOver 5s linear forwards 1;
+  transition: transform 1s ease-in-out;
+
+}
+
+
+@keyframes moveOver {
+  100% {
+    transform: translateX(-100vw);
+  }
 }
 
 div.imageAndTextCaption {
@@ -535,24 +546,15 @@ div.imageAndTextCaption {
   background-color: white;
   cursor: pointer;
   transform-origin: right;
-  transition: transform 1s ease-in-out;
 
   transform: rotateY(50deg) skewY(11deg) translateZ(-4vw);
-
-  /* animation: moveSlide 1s linear forwards 1; */
-
 }
 
 
-/* @keyframes moveSlide {
-  100% {
-    transform: translateX(-100%) rotateY(50deg) skewY(11deg) translateZ(-4vw);
-  }
-} */
 
 
 div.imageAndTextCaption:hover {
-  animation: none;
+  transform: scale(1.1);
 
 }
 
