@@ -25,39 +25,42 @@ const widthOfTheSlider = parseInt(
 
 const restofTheSlides = imageAndTextCaption.length - numberOfSlidesShown + 1;
 const allSlides = (imageAndTextCaption.length + 1) * restofTheSlides;
-const sideLeft = widthOfTheSlider - restofTheSlides * widthOfOneSlide;
+const sideLeft = restofTheSlides * widthOfOneSlide - widthOfTheSlider;
 
 console.log(sideLeft);
 
-projectImagesAndCaptions.animate(
-  [
-    { transform: `translateX(0px)`, offset: 0 },
-    { transform: `translateX(${sideLeft}px)`, offset: 0 },
-
-    { transform: `translateX(${sideLeft * -1}px)`, offset: 1 }
-  ],
-  {
-    duration: 20000, //milliseconds
-    easing: "ease-in-out", //'linear', a bezier curve, etc.
-    delay: 10, //milliseconds
-    iterations: Infinity, //or a number
-    direction: "alternate", //'normal', 'reverse', etc.
-    fill: "forwards" //'backwards', 'both', 'none', 'auto'
+function myMove(elem) {
+  var pos = 0;
+  var id = setInterval(frame, 4000);
+  function frame() {
+    if (pos === sideLeft) {
+      clearInterval(id);
+    } else {
+      pos += widthOfOneSlide;
+      elem.style.transform = `translateX(-${pos}px) rotateY(50deg) skewY(11deg)`;
+    }
   }
-);
+}
 
-// function myMove(elem) {
-//   var pos = 0;
-//   var id = setInterval(frame, 4000);
-//   function frame() {
-//     if (pos === sideLeft) {
-//       clearInterval(id);
-//     } else {
-//       pos += widthOfSlide;
-//       elem.style.transform = `translateX(-${pos}px) rotateY(50deg) skewY(11deg)`;
-//     }
-//   }
-// }
+imageAndTextCaption.forEach(e => myMove(e));
 
 // // myMove(projectImagesAndCaptions);
-// imageAndTextCaption.forEach(e => myMove(e));
+
+// imageAndTextCaption.forEach(e => {
+//   e.animate(
+//     [
+//       { transform: `translateX(0px)`, offset: 0 },
+//       { transform: `translateX(${sideLeft}px)`, offset: 0 },
+
+//       { transform: `translateX(${sideLeft * -1}px)`, offset: 1 }
+//     ],
+//     {
+//       duration: 20000, //milliseconds
+//       easing: "ease-in-out", //'linear', a bezier curve, etc.
+//       delay: 10, //milliseconds
+//       iterations: Infinity, //or a number
+//       direction: "alternate", //'normal', 'reverse', etc.
+//       fill: "forwards" //'backwards', 'both', 'none', 'auto'
+//     }
+//   );
+// });
