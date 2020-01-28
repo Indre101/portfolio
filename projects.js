@@ -6,36 +6,27 @@ const imageAndTextCaption = document.querySelectorAll(".imageAndTextCaption");
 const imageAndTextCaptionConvertedArray = Array.from(imageAndTextCaption);
 const projectImagesAndCaptions = document.querySelector(".projectImages");
 
-// let htmlStyles = window.getComputedStyle(document.querySelector("html"));
-// let colNum = parseInt(htmlStyles.getPropertyValue("--colNum"));
+const evenChildren = document.querySelectorAll(
+  ".imageAndTextCaption:nth-child(even)"
+);
+const oddChildren = document.querySelectorAll(
+  ".imageAndTextCaption:nth-child(odd)"
+);
 
-// window.onload = function() {
-//   document.documentElement.style.setProperty(
-//     "--colNum",
-//     imageAndTextCaption.length
-//   );
-// };
+window.onload = function() {
+  addClasess();
+};
 
-imageAndTextCaption.forEach(slide => {
-  slide.addEventListener("mouseover", stopAnimation);
-});
+function addClasess() {
+  evenChildren.forEach(child => {
+    setTimeout(() => {
+      child.classList.remove("right-side-Animation");
+      child.classList.add("left-Slide-animation");
 
-function stopAnimation() {
-  imageAndTextCaption.forEach(slide => {});
-}
-
-imageAndTextCaption.forEach(slide => {
-  slide.addEventListener("mouseout", continueAnimation);
-});
-
-function continueAnimation() {
-  imageAndTextCaption.forEach(slide => {});
-}
-
-function getTheStylePropertiesOfTransforms(slide) {
-  var computedStyle = window.getComputedStyle(slide);
-  let translatedX = computedStyle.getPropertyValue("translateX");
-  let skewedY = computedStyle.getPropertyValue("skewY");
-  let rotated = computedStyle.getPropertyValue("rotateY");
-  console.log(translatedX, skewedY, rotated);
+      setTimeout(() => {
+        child.classList.add("right-side-Animation");
+        child.classList.remove("left-Slide-animation");
+      }, 3000);
+    }, 1000);
+  });
 }
