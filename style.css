@@ -556,16 +556,7 @@ div.imageAndTextCaption {
 
 }
 
-
-div.imageAndTextCaption.stopedSlide {
-  transform: rotateY(90deg) skewY(11deg) !important;
-}
-
-
-div.imageAndTextCaption:hover {
-  border: 5px solid black;
-  z-index: 100;
-}
+div.imageAndTextCaption:hover {}
 
 .arrowsContainer {
   display: flex;
