@@ -16,26 +16,9 @@ const widthOfOneSlide = parseInt(styleOfOneSlide.getPropertyValue("width"), 10);
 const restofTheSlides = imageAndTextCaption.length - numberOfSlidesShown + 1;
 const widthOfTheLeftSlides = restofTheSlides * widthOfOneSlide;
 
-// function myMove(elem) {
-//   var pos = 0;
-//   var id = setInterval(frame, 4000);
-//   function frame() {
-//     if (pos === widthOfTheLeftSlides) {
-//       clearInterval(id);
-//     } else {
-//       pos += widthOfOneSlide;
-//       elem.style.transform = `translateX(-${pos}px) rotateY(50deg) skewY(11deg)`;
-//     }
-//   }
-// }
-
-// imageAndTextCaption.forEach(e => myMove(e));
-
-// // myMove(projectImagesAndCaptions);
-
-// Animation for the slider
-imageAndTextCaption.forEach(slide => {
-  slide.animate(
+function Slide(element) {
+  this.element = element;
+  this.animationoftheslide = this.element.animate(
     [
       {
         transform: `translateX(0px) rotateY(50deg) skewY(11deg)`
@@ -55,4 +38,21 @@ imageAndTextCaption.forEach(slide => {
       fill: "forwards" //'backwards', 'both', 'none', 'auto'
     }
   );
+
+  this.stopAnimtation = function() {
+    console.log(this.animationoftheslide);
+    this.animationoftheslide.pause();
+  };
+}
+
+const stopbutton = document.querySelector("button");
+let slidesObjArr = [];
+imageAndTextCaption.forEach(slide => {
+  let newSlide = new Car(slide);
+  newSlide.animationoftheslide;
+  slidesObjArr.push(newSlide);
 });
+
+stopbutton.onclick = function() {
+  arr.forEach(e => e.stopAnimtation());
+};
