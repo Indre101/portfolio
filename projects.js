@@ -24,8 +24,8 @@ const widthOfTheSlider = parseInt(
 );
 
 const restofTheSlides = imageAndTextCaption.length - numberOfSlidesShown + 1;
-const allSlides = (imageAndTextCaption.length + 1) * restofTheSlides;
-const sideLeft = restofTheSlides * widthOfOneSlide - widthOfTheSlider;
+// const allSlides = (imageAndTextCaption.length + 1) * restofTheSlides;
+const sideLeft = restofTheSlides * widthOfOneSlide;
 
 console.log(sideLeft);
 
@@ -50,15 +50,21 @@ imageAndTextCaption.forEach(e => {
   e.animate(
     [
       {
-        transform: `translateX(-${sideLeft}px) rotateY(50deg) skewY(11deg)`
+        transform: `translateX(0px) rotateY(50deg) skewY(11deg)`
       },
 
       {
-        transform: `translateX(${sideLeft}px) rotateY(50deg) skewY(11deg)`
+        transform: `translateX(-${sideLeft + 20}px) rotateY(50deg) skewY(11deg)`
       }
+
+      // {
+      //   transform: `translateX(-${sideLeft -
+      //     widthOfTheSlider}px) rotateY(50deg) skewY(11deg)`
+      // }
     ],
     {
       duration: 5000, //milliseconds
+      delay: 10,
       easing: "ease-in-out", //'linear', a bezier curve, etc.
       iterations: Infinity, //or a number
       direction: "alternate", //'normal', 'reverse', etc.
