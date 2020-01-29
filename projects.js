@@ -13,12 +13,21 @@ const numberOfSlidesShown = 5;
 const oneSlideOfProject = document.querySelector(".imageAndTextCaption");
 const styleOfOneSlide = window.getComputedStyle(oneSlideOfProject);
 const widthOfOneSlide = parseInt(styleOfOneSlide.getPropertyValue("width"), 10);
-const restofTheSlides = imageAndTextCaption.length - numberOfSlidesShown + 1;
+const restofTheSlides = imageAndTextCaption.length - numberOfSlidesShown;
 const widthOfTheLeftSlides = restofTheSlides * widthOfOneSlide;
+
+let rect = imageAndTextCaption[0].getBoundingClientRect();
+console.log(rect.left);
+
+let rectLast = imageAndTextCaption[
+  imageAndTextCaption.length - 1
+].getBoundingClientRect();
+console.log(rectLast.right);
 
 const animaionSlider = element => {
   let styleOfTheSlide = window.getComputedStyle(element);
   let matrix = new WebKitCSSMatrix(styleOfTheSlide.webkitTransform);
+  console.log(widthOfTheLeftSlides);
   let b = element.animate(
     [
       {
@@ -26,13 +35,17 @@ const animaionSlider = element => {
       },
 
       {
-        transform: `translateX(-${widthOfTheLeftSlides +
-          20}px) rotateY(50deg) skewY(11deg)`
+        transform: `translateX(-${rectLast.right -
+          widthOfOneSlide * numberOfSlidesShown}px) rotateY(50deg) skewY(11deg)`
+      },
+
+      {
+        transform: `translateX(-${rect.left -
+          widthOfOneSlide}px) rotateY(50deg) skewY(11deg)`
       }
     ],
     {
-      duration: 5000, //milliseconds
-      delay: 10,
+      duration: 40000, //milliseconds
       easing: "ease-in-out", //'linear', a bezier curve, etc.
       iterations: Infinity, //or a number
       direction: "alternate", //'normal', 'reverse', etc.
@@ -56,7 +69,7 @@ const changeAnimation = slide => {
       }
     ],
     {
-      duration: 5000, //milliseconds
+      duration: 1000, //milliseconds
       delay: 5,
       easing: "ease-in-out", //'linear', a bezier curve, etc.
       iterations: 1, //or a number
