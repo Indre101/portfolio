@@ -63,6 +63,7 @@ imageAndTextCaption.forEach(slide => {
 
   slide.onmouseover = function() {
     console.log(slide);
+    slide.style.transform = "rotate(-20deg)";
 
     slidesObjArr.forEach(e => e.stopAnimtation());
   };
