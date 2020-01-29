@@ -9,7 +9,7 @@ const projectImagesAndCaptions = document.querySelector(".projectImages");
 let html = document.querySelector("html");
 html.style.setProperty("--colNum", imageAndTextCaption.length);
 
-const numberOfSlidesShown = 5;
+const numberOfSlidesShown = 5.5;
 const oneSlideOfProject = document.querySelector(".imageAndTextCaption");
 const styleOfOneSlide = window.getComputedStyle(oneSlideOfProject);
 const widthOfOneSlide = parseInt(styleOfOneSlide.getPropertyValue("width"), 10);
@@ -17,12 +17,10 @@ const restofTheSlides = imageAndTextCaption.length - numberOfSlidesShown;
 const widthOfTheLeftSlides = restofTheSlides * widthOfOneSlide;
 
 let rect = imageAndTextCaption[0].getBoundingClientRect();
-console.log(rect.left);
 
 let rectLast = imageAndTextCaption[
   imageAndTextCaption.length - 1
 ].getBoundingClientRect();
-console.log(rectLast.right);
 
 const animaionSlider = element => {
   let styleOfTheSlide = window.getComputedStyle(element);
@@ -35,7 +33,8 @@ const animaionSlider = element => {
       },
 
       {
-        transform: `translateX(-${rectLast.right -
+        transform: `translateX(-${rectLast.right +
+          widthOfOneSlide -
           widthOfOneSlide * numberOfSlidesShown}px) rotateY(50deg) skewY(11deg)`
       },
 
@@ -96,13 +95,17 @@ function Slide(element) {
 let slidesObjArr = [];
 
 imageAndTextCaption.forEach(slide => {
+  console.log(slidesObjArr);
   let newSlide = new Slide(slide);
   slidesObjArr.push(newSlide);
-
-  window.onload = function() {
-    newSlide.animationoftheslide.test6();
-  };
 });
+
+window.onload = function() {
+  slidesObjArr.forEach(e => {
+    console.log("object");
+    e.animationoftheslide;
+  });
+};
 
 imageAndTextCaption.forEach(slide => {
   slide.onmouseover = function() {
