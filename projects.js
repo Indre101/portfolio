@@ -41,12 +41,7 @@ function Slide(element) {
     ),
     test6: function() {
       this.test5.pause();
-      console.log(this.test5);
     }
-  };
-
-  this.stopAnimtation = function() {
-    this.animationoftheslide.test5.pause();
   };
 
   this.playAnimtation = function() {
@@ -58,17 +53,46 @@ let slidesObjArr = [];
 
 imageAndTextCaption.forEach(slide => {
   let newSlide = new Slide(slide);
-  newSlide.animationoftheslide.test6();
   slidesObjArr.push(newSlide);
 
-  slide.onmouseover = function() {
-    console.log(slide);
-    slide.style.transform = "rotate(-20deg)";
+  window.onload = function() {
+    newSlide.animationoftheslide.test6();
+  };
 
-    slidesObjArr.forEach(e => e.stopAnimtation());
+  slide.onmouseover = function() {
+    slidesObjArr.forEach(e => e.animationoftheslide.test6());
+
+    let styleOfTheSlide = window.getComputedStyle(slide);
+    let matrix = new WebKitCSSMatrix(styleOfTheSlide.webkitTransform);
+
+    slidesObjArr[
+      imageAndTextCaptionConvertedArray.indexOf(slide)
+    ].animationoftheslide.test5 = slidesObjArr[
+      imageAndTextCaptionConvertedArray.indexOf(slide)
+    ].element.animate(
+      [
+        {
+          transform: `translateX(${matrix.m41}px) rotateY(50deg) skewY(11deg)`
+        },
+
+        {
+          transform: `translateX(${matrix.m41}px) rotateY(0) skewY(0)`
+        }
+      ],
+      {
+        duration: 5000, //milliseconds
+        delay: 5,
+        easing: "ease-in-out", //'linear', a bezier curve, etc.
+        iterations: 1, //or a number
+        direction: "normal", //'normal', 'reverse', etc.
+        fill: "forwards" //'backwards', 'both', 'none', 'auto'
+      }
+    );
   };
 
   slide.onmouseout = function() {
-    slidesObjArr.forEach(e => e.playAnimtation());
+    slidesObjArr.forEach(e => {
+      e.playAnimtation();
+    });
   };
 });

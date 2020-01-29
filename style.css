@@ -551,6 +551,7 @@ div.imageAndTextCaption {
   cursor: pointer;
   transform-origin: right;
   transition: transform 1s ease-in-out;
+  transform: rotateY(50deg) skewY(11deg);
 
 
 }
@@ -561,10 +562,10 @@ div.imageAndTextCaption.stopedSlide {
 }
 
 
-/* div.imageAndTextCaption:hover {
+div.imageAndTextCaption:hover {
   border: 5px solid black;
   z-index: 100;
-} */
+}
 
 .arrowsContainer {
   display: flex;
