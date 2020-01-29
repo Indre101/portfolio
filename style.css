@@ -19,7 +19,7 @@
   --border-15: 15px;
   --shadow: drop-shadow(4px 4px 1px #143140cf);
   --box-shadow: 4px 4px 1px #143140cf;
-  --colNum: 3;
+  --colNum: 9;
 }
 
 .d-flex-centered {
@@ -538,7 +538,8 @@ footer h4 {
 
 
 div.imageAndTextCaption {
-  width: 100%;
+  /* width: 100%; */
+  width: 250px;
   height: 300px;
   margin: 5vw 1.5vw;
   border-radius: var(--border-15);
@@ -552,6 +553,7 @@ div.imageAndTextCaption {
   transform-origin: right;
   transition: transform 1s ease-in-out;
   transform: rotateY(50deg) skewY(11deg);
+  max-height: 100%;
 
 
 }

@@ -9,7 +9,7 @@ const projectImagesAndCaptions = document.querySelector(".projectImages");
 let html = document.querySelector("html");
 html.style.setProperty("--colNum", imageAndTextCaption.length);
 
-const numberOfSlidesShown = 5.5;
+const numberOfSlidesShown = 4.5;
 const oneSlideOfProject = document.querySelector(".imageAndTextCaption");
 const styleOfOneSlide = window.getComputedStyle(oneSlideOfProject);
 const widthOfOneSlide = parseInt(styleOfOneSlide.getPropertyValue("width"), 10);
@@ -38,12 +38,12 @@ const animaionSlider = element => {
       },
 
       {
-        transform: `translateX(-${rect.left -
+        transform: `translateX(${rect.left -
           widthOfOneSlide}px) rotateY(50deg) skewY(11deg)`
       }
     ],
     {
-      duration: 40000, //milliseconds
+      duration: 30000, //milliseconds
       easing: "ease-in-out", //'linear', a bezier curve, etc.
       iterations: Infinity, //or a number
       direction: "alternate", //'normal', 'reverse', etc.
@@ -63,7 +63,7 @@ const changeAnimation = slide => {
       },
 
       {
-        transform: `translateX(${matrix.m41}px) rotateY(0) skewY(0)`
+        transform: `translateX(${matrix.m41}px) rotateY(0deg) skewY(0deg)`
       }
     ],
     {
@@ -94,7 +94,6 @@ function Slide(element) {
 let slidesObjArr = [];
 
 imageAndTextCaption.forEach(slide => {
-  console.log(slidesObjArr);
   let newSlide = new Slide(slide);
   slidesObjArr.push(newSlide);
 });
