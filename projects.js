@@ -40,19 +40,31 @@ function Slide(element) {
   );
 
   this.stopAnimtation = function() {
-    console.log(this.animationoftheslide);
     this.animationoftheslide.pause();
   };
-}
 
+  this.finishAnimtation = function() {
+    this.animationoftheslide.play();
+  };
+}
 const stopbutton = document.querySelector("button");
 let slidesObjArr = [];
 imageAndTextCaption.forEach(slide => {
-  let newSlide = new Car(slide);
+  let newSlide = new Slide(slide);
   newSlide.animationoftheslide;
   slidesObjArr.push(newSlide);
 });
 
+let i = 0;
 stopbutton.onclick = function() {
-  arr.forEach(e => e.stopAnimtation());
+  i++;
+  if (i == 1) {
+    slidesObjArr.forEach(e => e.stopAnimtation());
+  } else if (i == 2) {
+    i = 0;
+    slidesObjArr.forEach(e => {
+      e.finishAnimtation();
+      console.log(e.animationoftheslide.playState);
+    });
+  }
 };
