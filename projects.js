@@ -25,7 +25,6 @@ let rectLast = imageAndTextCaption[
 const animaionSlider = element => {
   let styleOfTheSlide = window.getComputedStyle(element);
   let matrix = new WebKitCSSMatrix(styleOfTheSlide.webkitTransform);
-  console.log(widthOfTheLeftSlides);
   let b = element.animate(
     [
       {
@@ -55,9 +54,9 @@ const animaionSlider = element => {
 };
 
 const changeAnimation = slide => {
-  let styleOfTheSlide = window.getComputedStyle(slide.element);
+  let styleOfTheSlide = window.getComputedStyle(slide);
   let matrix = new WebKitCSSMatrix(styleOfTheSlide.webkitTransform);
-  let c = slide.element.animate(
+  let c = slide.animate(
     [
       {
         transform: `translateX(${matrix.m41}px) rotateY(50deg) skewY(11deg)`
@@ -102,26 +101,20 @@ imageAndTextCaption.forEach(slide => {
 
 window.onload = function() {
   slidesObjArr.forEach(e => {
-    console.log("object");
     e.animationoftheslide;
   });
 };
 
-imageAndTextCaption.forEach(slide => {
-  slide.onmouseover = function() {
+slidesObjArr.forEach(slide => {
+  slide.element.onmouseover = function() {
     slidesObjArr.forEach(e => e.animationoftheslide.test6());
 
-    slidesObjArr[
-      imageAndTextCaptionConvertedArray.indexOf(slide)
-    ].animationoftheslide.test5 = changeAnimation(
-      slidesObjArr[imageAndTextCaptionConvertedArray.indexOf(slide)]
-    );
+    slide.animationoftheslide.test5 = changeAnimation(slide.element);
   };
 
-  slide.onmouseout = function() {
+  slide.element.onmouseout = function() {
     slidesObjArr.forEach(e => {
       e.animationoftheslide.test5 = animaionSlider(e.element);
-
       e.playAnimtation();
     });
   };
