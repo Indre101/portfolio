@@ -10,30 +10,17 @@ let html = document.querySelector("html");
 html.style.setProperty("--colNum", imageAndTextCaption.length);
 
 const numberOfSlidesShown = 5;
-const oneimageAndTextCaption = document.querySelector(".imageAndTextCaption");
-const style = window.getComputedStyle(oneimageAndTextCaption);
-const widthOfOneSlide = parseInt(style.getPropertyValue("width"), 10);
-
-projectImagesAndCaptions.style.width = `${5 * widthOfOneSlide}px`;
-const styleOfprojectImagesAndCaptions = window.getComputedStyle(
-  projectImagesAndCaptions
-);
-const widthOfTheSlider = parseInt(
-  styleOfprojectImagesAndCaptions.getPropertyValue("width"),
-  10
-);
-
+const oneSlideOfProject = document.querySelector(".imageAndTextCaption");
+const styleOfOneSlide = window.getComputedStyle(oneSlideOfProject);
+const widthOfOneSlide = parseInt(styleOfOneSlide.getPropertyValue("width"), 10);
 const restofTheSlides = imageAndTextCaption.length - numberOfSlidesShown + 1;
-// const allSlides = (imageAndTextCaption.length + 1) * restofTheSlides;
-const sideLeft = restofTheSlides * widthOfOneSlide;
-
-console.log(sideLeft);
+const widthOfTheLeftSlides = restofTheSlides * widthOfOneSlide;
 
 // function myMove(elem) {
 //   var pos = 0;
 //   var id = setInterval(frame, 4000);
 //   function frame() {
-//     if (pos === sideLeft) {
+//     if (pos === widthOfTheLeftSlides) {
 //       clearInterval(id);
 //     } else {
 //       pos += widthOfOneSlide;
@@ -46,21 +33,18 @@ console.log(sideLeft);
 
 // // myMove(projectImagesAndCaptions);
 
-imageAndTextCaption.forEach(e => {
-  e.animate(
+// Animation for the slider
+imageAndTextCaption.forEach(slide => {
+  slide.animate(
     [
       {
         transform: `translateX(0px) rotateY(50deg) skewY(11deg)`
       },
 
       {
-        transform: `translateX(-${sideLeft + 20}px) rotateY(50deg) skewY(11deg)`
+        transform: `translateX(-${widthOfTheLeftSlides +
+          20}px) rotateY(50deg) skewY(11deg)`
       }
-
-      // {
-      //   transform: `translateX(-${sideLeft -
-      //     widthOfTheSlider}px) rotateY(50deg) skewY(11deg)`
-      // }
     ],
     {
       duration: 5000, //milliseconds
