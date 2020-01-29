@@ -18,53 +18,56 @@ const widthOfTheLeftSlides = restofTheSlides * widthOfOneSlide;
 
 function Slide(element) {
   this.element = element;
-  this.animationoftheslide = this.element.animate(
-    [
-      {
-        transform: `translateX(0px) rotateY(50deg) skewY(11deg)`
-      },
+  this.animationoftheslide = {
+    test5: this.element.animate(
+      [
+        {
+          transform: `translateX(0px) rotateY(50deg) skewY(11deg)`
+        },
 
+        {
+          transform: `translateX(-${widthOfTheLeftSlides +
+            20}px) rotateY(50deg) skewY(11deg)`
+        }
+      ],
       {
-        transform: `translateX(-${widthOfTheLeftSlides +
-          20}px) rotateY(50deg) skewY(11deg)`
+        duration: 5000, //milliseconds
+        delay: 10,
+        easing: "ease-in-out", //'linear', a bezier curve, etc.
+        iterations: Infinity, //or a number
+        direction: "alternate", //'normal', 'reverse', etc.
+        fill: "forwards" //'backwards', 'both', 'none', 'auto'
       }
-    ],
-    {
-      duration: 5000, //milliseconds
-      delay: 10,
-      easing: "ease-in-out", //'linear', a bezier curve, etc.
-      iterations: Infinity, //or a number
-      direction: "alternate", //'normal', 'reverse', etc.
-      fill: "forwards" //'backwards', 'both', 'none', 'auto'
+    ),
+    test6: function() {
+      this.test5.pause();
+      console.log(this.test5);
     }
-  );
+  };
 
   this.stopAnimtation = function() {
-    this.animationoftheslide.pause();
+    this.animationoftheslide.test5.pause();
   };
 
-  this.finishAnimtation = function() {
-    this.animationoftheslide.play();
+  this.playAnimtation = function() {
+    this.animationoftheslide.test5.play();
   };
 }
-const stopbutton = document.querySelector("button");
+
 let slidesObjArr = [];
+
 imageAndTextCaption.forEach(slide => {
   let newSlide = new Slide(slide);
-  newSlide.animationoftheslide;
+  newSlide.animationoftheslide.test6();
   slidesObjArr.push(newSlide);
-});
 
-let i = 0;
-stopbutton.onclick = function() {
-  i++;
-  if (i == 1) {
+  slide.onmouseover = function() {
+    console.log(slide);
+
     slidesObjArr.forEach(e => e.stopAnimtation());
-  } else if (i == 2) {
-    i = 0;
-    slidesObjArr.forEach(e => {
-      e.finishAnimtation();
-      console.log(e.animationoftheslide.playState);
-    });
-  }
-};
+  };
+
+  slide.onmouseout = function() {
+    slidesObjArr.forEach(e => e.playAnimtation());
+  };
+});
