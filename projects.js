@@ -9,6 +9,8 @@ const imageAndTextCaption = document.querySelectorAll(
 );
 const imageAndTextCaptionConvertedArray = Array.from(imageAndTextCaption);
 const projectImagesAndCaptions = document.querySelector(".projectImages");
+const positionsOfprojectImagesAndCaptions = projectImagesAndCaptions.getBoundingClientRect();
+
 let html = document.querySelector("html");
 html.style.setProperty("--colNum", imageAndTextCaption.length);
 
@@ -26,12 +28,29 @@ let lastslideRight = imageAndTextCaption[
 
 let sliderContainerCoordinates = projectImagesAndCaptions.getBoundingClientRect();
 
-const animaionSlider = element => {
-  let b = element.animate(
+function getXposition(slide) {
+  let styleOfTheSlide = window.getComputedStyle(slide);
+  let matrix = new WebKitCSSMatrix(styleOfTheSlide.webkitTransform);
+  return matrix.m41;
+}
+
+function checksHowTheSlideShouldTransisionOnHover(xPositionOfTheSlide) {
+  if (xPositionOfTheSlide < positionsOfprojectImagesAndCaptions.left) {
+    return -1;
+  } else if (xPositionOfTheSlide > positionsOfprojectImagesAndCaptions.right) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+const animaionSlider = slide => {
+  checksHowTheSlideShouldTransisionOnHover(slide);
+  let b = slide.animate(
     [
       {
         transform: `translateX(${getXposition(
-          element
+          slide
         )}px) rotateY(50deg) skewY(11deg)`,
         boxShadow: "4px 4px 1px #143140cf"
 
@@ -39,7 +58,7 @@ const animaionSlider = element => {
       },
 
       {
-        transform: `translateX(${lastslideRight.right +
+        transform: `translateX(-${lastslideRight.right +
           widthOfOneSlide -
           widthOfOneSlide * restofTheSlides}px) rotateY(50deg) skewY(11deg)`,
         boxShadow: "4px 4px 1px #143140cf"
@@ -64,13 +83,9 @@ const animaionSlider = element => {
   return b;
 };
 
-function getXposition(element) {
-  let styleOfTheSlide = window.getComputedStyle(element);
-  let matrix = new WebKitCSSMatrix(styleOfTheSlide.webkitTransform);
-  return matrix.m41;
-}
-
-function checkTheXpostition() {}
+// box-shadow: 2px 2px 15px blue;
+//     transform: rotateY(0) skewY(0) translateY(0);
+// }
 
 const changeAnimation = slide => {
   let c = slide.animate(
@@ -82,8 +97,11 @@ const changeAnimation = slide => {
         boxShadow: "4px 4px 1px #143140cf"
       },
       {
-        transform: `translateX(${getXposition(slide) -
-          widthOfOneSlide / 2}px) rotateY(0deg) skewY(0deg)`,
+        transform: `translateX(${getXposition(slide) +
+          (widthOfOneSlide / 2) *
+            checksHowTheSlideShouldTransisionOnHover(
+              slide
+            )}px) rotateY(0deg) skewY(0deg)`,
         boxShadow: "2px 2px 15px blue"
       }
     ],
@@ -110,6 +128,11 @@ function Slide(element) {
   this.playAnimtation = function() {
     this.animationoftheslide.test5.play();
   };
+
+  this.xPosition = getXposition(this.element);
+  this.moveLeftOrRight = checksHowTheSlideShouldTransisionOnHover(
+    this.xPosition
+  );
 }
 
 let slidesObjArr = [];
@@ -128,7 +151,7 @@ window.onload = function() {
 slidesObjArr.forEach(slide => {
   slide.element.onmouseover = function() {
     setTimeout(() => {
-      showImageModal();
+      // showImageModal();
     }, 2000);
     slidesObjArr.forEach(e => e.animationoftheslide.test6());
     slide.animationoftheslide.test5 = changeAnimation(slide.element);
