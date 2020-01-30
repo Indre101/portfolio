@@ -44,8 +44,8 @@ function checksHowTheSlideShouldTransisionOnHover(xPositionOfTheSlide) {
   }
 }
 
-const animaionSlider = slide => {
-  checksHowTheSlideShouldTransisionOnHover(slide);
+const animaionSlider = (slide, postitionX) => {
+  console.log(postitionX);
   let b = slide.animate(
     [
       {
@@ -87,7 +87,7 @@ const animaionSlider = slide => {
 //     transform: rotateY(0) skewY(0) translateY(0);
 // }
 
-const changeAnimation = slide => {
+const changeAnimation = (slide, xPosition) => {
   let c = slide.animate(
     [
       {
@@ -98,7 +98,7 @@ const changeAnimation = slide => {
       },
       {
         transform: `translateX(${getXposition(slide) +
-          (widthOfOneSlide / 2) *
+          widthOfOneSlide *
             checksHowTheSlideShouldTransisionOnHover(
               slide
             )}px) rotateY(0deg) skewY(0deg)`,
@@ -119,8 +119,9 @@ const changeAnimation = slide => {
 
 function SLIDE(element) {
   this.element = element;
+  this.xPosition = getXposition(this.element);
   this.animationoftheslide = {
-    test5: animaionSlider(this.element),
+    test5: animaionSlider(this.element, this.xPosition),
     test6: function() {
       this.test5.pause();
     }
@@ -129,7 +130,6 @@ function SLIDE(element) {
     this.animationoftheslide.test5.play();
   };
 
-  this.xPosition = getXposition(this.element);
   this.moveLeftOrRight = checksHowTheSlideShouldTransisionOnHover(
     this.xPosition
   );
@@ -154,15 +154,18 @@ slidesObjArr.forEach(slide => {
       // showImageModal();
     }, 2000);
     slidesObjArr.forEach(e => e.animationoftheslide.test6());
-    slide.animationoftheslide.test5 = changeAnimation(slide.element);
+    slide.animationoftheslide.test5 = changeAnimation(
+      slide.element,
+      slide.xPosition
+    );
   };
 
-  // slide.element.onmouseout = function() {
-  //   slidesObjArr.forEach(e => {
-  //     e.animationoftheslide.test5 = animaionSlider(e.element);
-  //     e.playAnimtation();
-  //   });
-  // };
+  slide.element.onmouseout = function() {
+    slidesObjArr.forEach(e => {
+      e.animationoftheslide.test5 = animaionSlider(e.element, e.xPosition);
+      e.playAnimtation();
+    });
+  };
 });
 
 function showImageModal() {
@@ -180,7 +183,7 @@ imageModalContainer.onmouseover = function() {};
 imageModal.onmouseout = function() {
   hideImageModal();
   slidesObjArr.forEach(e => {
-    e.animationoftheslide.test5 = animaionSlider(e.element);
+    e.animationoftheslide.test5 = animaionSlider(e.element, e.xPosition);
     e.playAnimtation();
   });
 };
