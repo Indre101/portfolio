@@ -2,9 +2,19 @@
 
 const textCaption = document.querySelector(".textCaption");
 const imageIntheCarousel = document.querySelector(".imageIntheCarousel");
-const imageAndTextCaption = document.querySelectorAll(".imageAndTextCaption");
+const imageAndTextCaption = document.querySelectorAll(
+  ".projectImages > .imageAndTextCaption"
+);
 const imageAndTextCaptionConvertedArray = Array.from(imageAndTextCaption);
 const projectImagesAndCaptions = document.querySelector(".projectImages");
+const styleOfprojectImagesAndCaptions = window.getComputedStyle(
+  projectImagesAndCaptions
+);
+const widthProjectImagesAndCaptions = parseInt(
+  styleOfprojectImagesAndCaptions.getPropertyValue("width"),
+  10
+);
+console.log(widthProjectImagesAndCaptions);
 
 let html = document.querySelector("html");
 html.style.setProperty("--colNum", imageAndTextCaption.length);
@@ -16,30 +26,55 @@ const widthOfOneSlide = parseInt(styleOfOneSlide.getPropertyValue("width"), 10);
 const restofTheSlides = imageAndTextCaption.length - numberOfSlidesShown;
 const widthOfTheLeftSlides = restofTheSlides * widthOfOneSlide;
 
-let rect = imageAndTextCaption[0].getBoundingClientRect();
-
-let rectLast = imageAndTextCaption[
+let firstSlideLeft = imageAndTextCaption[0].getBoundingClientRect();
+let lastslideRight = imageAndTextCaption[
   imageAndTextCaption.length - 1
 ].getBoundingClientRect();
+
+let sliderContainerCoordinates = projectImagesAndCaptions.getBoundingClientRect();
+console.log(sliderContainerCoordinates.left);
+console.log(sliderContainerCoordinates.right);
 
 const animaionSlider = element => {
   let styleOfTheSlide = window.getComputedStyle(element);
   let matrix = new WebKitCSSMatrix(styleOfTheSlide.webkitTransform);
+
+  // if (
+  //   matrix.m41 <= sliderContainerCoordinates.left ||
+  //   matrix.m41 >= sliderContainerCoordinates.right
+  // ) {
+  //   console.log("object");
+  // }
+
   let b = element.animate(
     [
       {
-        transform: `translateX(${matrix.m41}px) rotateY(50deg) skewY(11deg)`
+        transform: `translateX(${matrix.m41}px) rotateY(50deg) skewY(11deg)`,
+        width: `${widthOfOneSlide}px`,
+        height: "30vh",
+        zIndex: "0"
+
+        // opacity: "1"
       },
 
       {
-        transform: `translateX(-${rectLast.right +
+        transform: `translateX(${lastslideRight.right +
           widthOfOneSlide -
-          widthOfOneSlide * numberOfSlidesShown}px) rotateY(50deg) skewY(11deg)`
+          widthOfOneSlide * restofTheSlides}px) rotateY(50deg) skewY(11deg)`,
+        width: `${widthOfOneSlide}px`,
+        height: "30vh",
+        zIndex: "0"
+
+        // opacity: "1"
       },
 
       {
-        transform: `translateX(${rect.left -
-          widthOfOneSlide}px) rotateY(50deg) skewY(11deg)`
+        transform: `translateX(${firstSlideLeft.left -
+          widthOfOneSlide}px) rotateY(50deg) skewY(11deg)`,
+        width: `${widthOfOneSlide}px`,
+        height: "30vh",
+        zIndex: "0"
+        // opacity: "1"
       }
     ],
     {
@@ -50,6 +85,7 @@ const animaionSlider = element => {
       fill: "forwards" //'backwards', 'both', 'none', 'auto'
     }
   );
+  console.log(b);
   return b;
 };
 
@@ -59,11 +95,16 @@ const changeAnimation = slide => {
   let c = slide.animate(
     [
       {
-        transform: `translateX(${matrix.m41}px) rotateY(50deg) skewY(11deg)`
+        transform: `translateX(${matrix.m41}px) rotateY(50deg) skewY(11deg)`,
+        width: `${widthOfOneSlide}px`,
+        height: "30vh",
+        zIndex: "0"
       },
-
       {
-        transform: `translateX(${matrix.m41}px) rotateY(0deg) skewY(0deg)`
+        transform: `translateX(${matrix.m41}px) rotateY(0deg) skewY(0deg)`,
+        width: `${widthOfOneSlide * 2}px`,
+        height: "45vh",
+        zIndex: "1"
       }
     ],
     {
@@ -89,6 +130,14 @@ function Slide(element) {
   this.playAnimtation = function() {
     this.animationoftheslide.test5.play();
   };
+
+  // this.checkPosition = function () {
+
+  //   if (this.element) {
+
+  //   }
+
+  // }
 }
 
 let slidesObjArr = [];

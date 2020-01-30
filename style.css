@@ -622,3 +622,24 @@ div.imageAndTextCaption:hover {}
   height: 1%;
   background-color: black;
 }
+
+
+.imageModalContainer {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ff7f5078;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.imageModal {
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
