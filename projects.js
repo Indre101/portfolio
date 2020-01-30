@@ -117,7 +117,7 @@ const changeAnimation = slide => {
   return c;
 };
 
-function Slide(element) {
+function SLIDE(element) {
   this.element = element;
   this.animationoftheslide = {
     test5: animaionSlider(this.element),
@@ -138,7 +138,7 @@ function Slide(element) {
 let slidesObjArr = [];
 
 imageAndTextCaption.forEach(slide => {
-  let newSlide = new Slide(slide);
+  let newSlide = new SLIDE(slide);
   slidesObjArr.push(newSlide);
 });
 
