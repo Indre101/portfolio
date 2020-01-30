@@ -1,7 +1,8 @@
 // PROJECTS PAGE
 
 const textCaption = document.querySelector(".textCaption");
-const imageModal = document.querySelector(".imageModalContainer");
+const imageModalContainer = document.querySelector(".imageModalContainer");
+const imageModal = document.querySelector(".imageModal");
 const imageIntheCarousel = document.querySelector(".imageIntheCarousel");
 const imageAndTextCaption = document.querySelectorAll(
   ".projectImages > .imageAndTextCaption"
@@ -26,23 +27,13 @@ let lastslideRight = imageAndTextCaption[
 let sliderContainerCoordinates = projectImagesAndCaptions.getBoundingClientRect();
 
 const animaionSlider = element => {
-  let styleOfTheSlide = window.getComputedStyle(element);
-  let matrix = new WebKitCSSMatrix(styleOfTheSlide.webkitTransform);
-
-  // if (
-  //   matrix.m41 <= sliderContainerCoordinates.left ||
-  //   matrix.m41 >= sliderContainerCoordinates.right
-  // ) {
-  //   console.log("object");
-  // }
-
   let b = element.animate(
     [
       {
-        transform: `translateX(${matrix.m41}px) rotateY(50deg) skewY(11deg)`,
-        width: `${widthOfOneSlide}px`,
-        height: "30vh",
-        zIndex: "0"
+        transform: `translateX(${getXposition(
+          element
+        )}px) rotateY(50deg) skewY(11deg)`,
+        boxShadow: "4px 4px 1px #143140cf"
 
         // opacity: "1"
       },
@@ -51,9 +42,7 @@ const animaionSlider = element => {
         transform: `translateX(${lastslideRight.right +
           widthOfOneSlide -
           widthOfOneSlide * restofTheSlides}px) rotateY(50deg) skewY(11deg)`,
-        width: `${widthOfOneSlide}px`,
-        height: "30vh",
-        zIndex: "0"
+        boxShadow: "4px 4px 1px #143140cf"
 
         // opacity: "1"
       },
@@ -61,10 +50,7 @@ const animaionSlider = element => {
       {
         transform: `translateX(${firstSlideLeft.left -
           widthOfOneSlide}px) rotateY(50deg) skewY(11deg)`,
-        width: `${widthOfOneSlide}px`,
-        height: "30vh",
-        zIndex: "0"
-        // opacity: "1"
+        boxShadow: "4px 4px 1px #143140cf"
       }
     ],
     {
@@ -78,18 +64,27 @@ const animaionSlider = element => {
   return b;
 };
 
-const changeAnimation = slide => {
-  let styleOfTheSlide = window.getComputedStyle(slide);
+function getXposition(element) {
+  let styleOfTheSlide = window.getComputedStyle(element);
   let matrix = new WebKitCSSMatrix(styleOfTheSlide.webkitTransform);
+  return matrix.m41;
+}
+
+function checkTheXpostition() {}
+
+const changeAnimation = slide => {
   let c = slide.animate(
     [
       {
-        transform: `translateX(${matrix.m41}px) rotateY(50deg) skewY(11deg)`,
-        border: "none"
+        transform: `translateX(${getXposition(
+          slide
+        )}px) rotateY(50deg) skewY(11deg)`,
+        boxShadow: "4px 4px 1px #143140cf"
       },
       {
-        transform: `translateX(${matrix.m41}px) rotateY(0deg) skewY(0deg)`,
-        border: "3px solid black"
+        transform: `translateX(${getXposition(slide) -
+          widthOfOneSlide / 2}px) rotateY(0deg) skewY(0deg)`,
+        boxShadow: "2px 2px 15px blue"
       }
     ],
     {
@@ -132,7 +127,9 @@ window.onload = function() {
 
 slidesObjArr.forEach(slide => {
   slide.element.onmouseover = function() {
-    showImageModal();
+    setTimeout(() => {
+      showImageModal();
+    }, 2000);
     slidesObjArr.forEach(e => e.animationoftheslide.test6());
     slide.animationoftheslide.test5 = changeAnimation(slide.element);
   };
@@ -146,16 +143,21 @@ slidesObjArr.forEach(slide => {
 });
 
 function showImageModal() {
-  imageModal.classList.remove("d-none");
-  imageModal.classList.add("d-flex-centered");
+  imageModalContainer.classList.remove("d-none");
+  imageModalContainer.classList.add("d-flex-centered");
 }
 
 function hideImageModal() {
-  imageModal.classList.add("d-none");
-  imageModal.classList.remove("d-flex-centered");
+  imageModalContainer.classList.add("d-none");
+  imageModalContainer.classList.remove("d-flex-centered");
 }
 
-imageModal.onmouseover = function() {
-  slidesObjArr.forEach(e => e.animationoftheslide.test6());
-  // slide.animationoftheslide.test5 = changeAnimation(slide.element);
+imageModalContainer.onmouseover = function() {};
+
+imageModal.onmouseout = function() {
+  hideImageModal();
+  slidesObjArr.forEach(e => {
+    e.animationoftheslide.test5 = animaionSlider(e.element);
+    e.playAnimtation();
+  });
 };
