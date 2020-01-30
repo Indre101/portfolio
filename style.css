@@ -636,6 +636,10 @@ div.imageAndTextCaption:hover {}
   display: flex;
 }
 
+.d-none {
+  display: none;
+}
+
 .imageModal {
   width: 500px;
   display: flex;

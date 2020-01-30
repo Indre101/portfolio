@@ -1,21 +1,13 @@
 // PROJECTS PAGE
 
 const textCaption = document.querySelector(".textCaption");
+const imageModal = document.querySelector(".imageModalContainer");
 const imageIntheCarousel = document.querySelector(".imageIntheCarousel");
 const imageAndTextCaption = document.querySelectorAll(
   ".projectImages > .imageAndTextCaption"
 );
 const imageAndTextCaptionConvertedArray = Array.from(imageAndTextCaption);
 const projectImagesAndCaptions = document.querySelector(".projectImages");
-const styleOfprojectImagesAndCaptions = window.getComputedStyle(
-  projectImagesAndCaptions
-);
-const widthProjectImagesAndCaptions = parseInt(
-  styleOfprojectImagesAndCaptions.getPropertyValue("width"),
-  10
-);
-console.log(widthProjectImagesAndCaptions);
-
 let html = document.querySelector("html");
 html.style.setProperty("--colNum", imageAndTextCaption.length);
 
@@ -32,8 +24,6 @@ let lastslideRight = imageAndTextCaption[
 ].getBoundingClientRect();
 
 let sliderContainerCoordinates = projectImagesAndCaptions.getBoundingClientRect();
-console.log(sliderContainerCoordinates.left);
-console.log(sliderContainerCoordinates.right);
 
 const animaionSlider = element => {
   let styleOfTheSlide = window.getComputedStyle(element);
@@ -85,7 +75,6 @@ const animaionSlider = element => {
       fill: "forwards" //'backwards', 'both', 'none', 'auto'
     }
   );
-  console.log(b);
   return b;
 };
 
@@ -96,15 +85,11 @@ const changeAnimation = slide => {
     [
       {
         transform: `translateX(${matrix.m41}px) rotateY(50deg) skewY(11deg)`,
-        width: `${widthOfOneSlide}px`,
-        height: "30vh",
-        zIndex: "0"
+        border: "none"
       },
       {
         transform: `translateX(${matrix.m41}px) rotateY(0deg) skewY(0deg)`,
-        width: `${widthOfOneSlide * 2}px`,
-        height: "45vh",
-        zIndex: "1"
+        border: "3px solid black"
       }
     ],
     {
@@ -130,14 +115,6 @@ function Slide(element) {
   this.playAnimtation = function() {
     this.animationoftheslide.test5.play();
   };
-
-  // this.checkPosition = function () {
-
-  //   if (this.element) {
-
-  //   }
-
-  // }
 }
 
 let slidesObjArr = [];
@@ -155,15 +132,30 @@ window.onload = function() {
 
 slidesObjArr.forEach(slide => {
   slide.element.onmouseover = function() {
+    showImageModal();
     slidesObjArr.forEach(e => e.animationoftheslide.test6());
-
     slide.animationoftheslide.test5 = changeAnimation(slide.element);
   };
 
-  slide.element.onmouseout = function() {
-    slidesObjArr.forEach(e => {
-      e.animationoftheslide.test5 = animaionSlider(e.element);
-      e.playAnimtation();
-    });
-  };
+  // slide.element.onmouseout = function() {
+  //   slidesObjArr.forEach(e => {
+  //     e.animationoftheslide.test5 = animaionSlider(e.element);
+  //     e.playAnimtation();
+  //   });
+  // };
 });
+
+function showImageModal() {
+  imageModal.classList.remove("d-none");
+  imageModal.classList.add("d-flex-centered");
+}
+
+function hideImageModal() {
+  imageModal.classList.add("d-none");
+  imageModal.classList.remove("d-flex-centered");
+}
+
+imageModal.onmouseover = function() {
+  slidesObjArr.forEach(e => e.animationoftheslide.test6());
+  // slide.animationoftheslide.test5 = changeAnimation(slide.element);
+};
