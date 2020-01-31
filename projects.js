@@ -9,7 +9,6 @@ const imageAndTextCaption = document.querySelectorAll(
 );
 const imageAndTextCaptionConvertedArray = Array.from(imageAndTextCaption);
 const projectImagesAndCaptions = document.querySelector(".projectImages");
-const positionsOfprojectImagesAndCaptions = projectImagesAndCaptions.getBoundingClientRect();
 
 let html = document.querySelector("html");
 html.style.setProperty("--colNum", imageAndTextCaption.length);
@@ -34,18 +33,7 @@ function getXposition(slide) {
   return matrix.m41;
 }
 
-function checksHowTheSlideShouldTransisionOnHover(xPositionOfTheSlide) {
-  if (xPositionOfTheSlide < positionsOfprojectImagesAndCaptions.left) {
-    return -1;
-  } else if (xPositionOfTheSlide > positionsOfprojectImagesAndCaptions.right) {
-    return 1;
-  } else {
-    return 0;
-  }
-}
-
-const animaionSlider = (slide, postitionX) => {
-  console.log(postitionX);
+const animationSlider = (slide, postitionX) => {
   let b = slide.animate(
     [
       {
@@ -73,7 +61,7 @@ const animaionSlider = (slide, postitionX) => {
       }
     ],
     {
-      duration: 30000, //milliseconds
+      duration: 10000, //milliseconds
       easing: "ease-in-out", //'linear', a bezier curve, etc.
       iterations: Infinity, //or a number
       direction: "alternate", //'normal', 'reverse', etc.
@@ -83,11 +71,11 @@ const animaionSlider = (slide, postitionX) => {
   return b;
 };
 
-// box-shadow: 2px 2px 15px blue;
-//     transform: rotateY(0) skewY(0) translateY(0);
-// }
-
 const changeAnimation = (slide, xPosition) => {
+  console.log(
+    widthOfOneSlide *
+      checksHowTheSlideShouldTransisionOnHover(getXposition(slide), slide)
+  );
   let c = slide.animate(
     [
       {
@@ -97,12 +85,18 @@ const changeAnimation = (slide, xPosition) => {
         boxShadow: "4px 4px 1px #143140cf"
       },
       {
-        transform: `translateX(${getXposition(slide) +
-          widthOfOneSlide *
-            checksHowTheSlideShouldTransisionOnHover(
-              slide
-            )}px) rotateY(0deg) skewY(0deg)`,
+        transform: `translateX(${widthOfOneSlide *
+          checksHowTheSlideShouldTransisionOnHover(
+            getXposition(slide),
+            slide
+          )}px) rotateY(0deg) skewY(0deg)`,
         boxShadow: "2px 2px 15px blue"
+      },
+      {
+        transform: `translateX(${getXposition(
+          slide
+        )}px) rotateY(50deg) skewY(11deg)`,
+        boxShadow: "4px 4px 1px #143140cf"
       }
     ],
     {
@@ -121,7 +115,7 @@ function SLIDE(element) {
   this.element = element;
   this.xPosition = getXposition(this.element);
   this.animationoftheslide = {
-    test5: animaionSlider(this.element, this.xPosition),
+    test5: animationSlider(this.element, this.xPosition),
     test6: function() {
       this.test5.pause();
     }
@@ -130,9 +124,9 @@ function SLIDE(element) {
     this.animationoftheslide.test5.play();
   };
 
-  this.moveLeftOrRight = checksHowTheSlideShouldTransisionOnHover(
-    this.xPosition
-  );
+  // this.moveLeftOrRight = checksHowTheSlideShouldTransisionOnHover(
+  //   this.xPosition
+  // );
 }
 
 let slidesObjArr = [];
@@ -148,12 +142,35 @@ window.onload = function() {
   });
 };
 
+function checksHowTheSlideShouldTransisionOnHover(xPositionOfTheSlide, slide) {
+  const positionsOfprojectImagesAndCaptions = projectImagesAndCaptions.getBoundingClientRect();
+  const a = slide.getBoundingClientRect();
+  // console.log(positionsOfprojectImagesAndCaptions.left, a.left);
+  console.log(positionsOfprojectImagesAndCaptions.right, a.right);
+
+  if (positionsOfprojectImagesAndCaptions.left + widthOfOneSlide > a.left) {
+    console.log("1");
+    return 1;
+  } else if (
+    positionsOfprojectImagesAndCaptions.right + widthOfOneSlide >
+    a.right
+  ) {
+    console.log("-1");
+    return -1;
+  } else {
+    console.log("0");
+    return 0;
+  }
+}
+
 slidesObjArr.forEach(slide => {
   slide.element.onmouseover = function() {
     setTimeout(() => {
       // showImageModal();
     }, 2000);
+
     slidesObjArr.forEach(e => e.animationoftheslide.test6());
+
     slide.animationoftheslide.test5 = changeAnimation(
       slide.element,
       slide.xPosition
@@ -162,7 +179,7 @@ slidesObjArr.forEach(slide => {
 
   slide.element.onmouseout = function() {
     slidesObjArr.forEach(e => {
-      e.animationoftheslide.test5 = animaionSlider(e.element, e.xPosition);
+      e.animationoftheslide.test5 = animationSlider(e.element, e.xPosition);
       e.playAnimtation();
     });
   };
@@ -183,7 +200,7 @@ imageModalContainer.onmouseover = function() {};
 imageModal.onmouseout = function() {
   hideImageModal();
   slidesObjArr.forEach(e => {
-    e.animationoftheslide.test5 = animaionSlider(e.element, e.xPosition);
+    e.animationoftheslide.test5 = animationSlider(e.element, e.xPosition);
     e.playAnimtation();
   });
 };
