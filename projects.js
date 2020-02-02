@@ -85,11 +85,12 @@ const changeAnimation = (slide, xPosition) => {
         boxShadow: "4px 4px 1px #143140cf"
       },
       {
-        transform: `translateX(${widthOfOneSlide *
-          checksHowTheSlideShouldTransisionOnHover(
-            getXposition(slide),
-            slide
-          )}px) rotateY(0deg) skewY(0deg)`,
+        transform: `translateX(${getXposition(slide) +
+          widthOfOneSlide *
+            checksHowTheSlideShouldTransisionOnHover(
+              getXposition(slide),
+              slide
+            )}px) rotateY(0deg) skewY(0deg)`,
         boxShadow: "2px 2px 15px blue"
       },
       {
@@ -145,15 +146,28 @@ window.onload = function() {
 function checksHowTheSlideShouldTransisionOnHover(xPositionOfTheSlide, slide) {
   const positionsOfprojectImagesAndCaptions = projectImagesAndCaptions.getBoundingClientRect();
   const a = slide.getBoundingClientRect();
-  // console.log(positionsOfprojectImagesAndCaptions.left, a.left);
-  console.log(positionsOfprojectImagesAndCaptions.right, a.right);
+  const mainLeft = parseInt(positionsOfprojectImagesAndCaptions.left, 10);
+  const mainRight = parseInt(positionsOfprojectImagesAndCaptions.right, 10);
+  const slideLeft = parseInt(a.left, 10);
+  const slideRight = parseInt(a.right, 10);
 
-  if (positionsOfprojectImagesAndCaptions.left + widthOfOneSlide > a.left) {
+  // console.log(positionsOfprojectImagesAndCaptions.left, a.left);
+  // console.log(
+  //   "main right" + positionsOfprojectImagesAndCaptions.right,
+  //   a.right
+  // );
+  console.log("main left" + mainLeft + widthOfOneSlide, slideLeft);
+  console.log("main left" + mainLeft + widthOfOneSlide, slideRight);
+
+  if (
+    mainLeft + widthOfOneSlide / 3 > slideLeft &&
+    mainLeft + widthOfOneSlide / 3 < slideRight
+  ) {
     console.log("1");
     return 1;
   } else if (
-    positionsOfprojectImagesAndCaptions.right + widthOfOneSlide >
-    a.right
+    mainRight - widthOfOneSlide < slideRight &&
+    mainRight - widthOfOneSlide < slideLeft
   ) {
     console.log("-1");
     return -1;
