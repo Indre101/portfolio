@@ -73,27 +73,21 @@ const animationSlider = (slide, postitionX) => {
 
 function checkIfPositiveNumber(number) {
   if (number > 0) {
-    return 0;
+    return 1;
   } else if (number < 0) {
     return -1;
+  } else {
+    return 1;
   }
 }
 
-const changeAnimation = (slide, xPosition) => {
+const changeAnimation = slide => {
   // console.log(
   //   widthOfOneSlide *
   //     checksHowTheSlideShouldTransisionOnHover(getXposition(slide), slide)
   // );
 
   const currentPosition = getXposition(slide);
-  console.log("current", currentPosition);
-  console.log("width", widthOfOneSlide);
-  console.log(
-    "object,",
-    (getXposition(slide) * checkIfPositiveNumber(currentPosition) +
-      widthOfOneSlide) *
-      checksHowTheSlideShouldTransisionOnHover(getXposition(slide), slide)
-  );
 
   let c = slide.animate(
     [
@@ -102,25 +96,18 @@ const changeAnimation = (slide, xPosition) => {
           slide
         )}px) rotateY(50deg) skewY(11deg)`,
         boxShadow: "4px 4px 1px #143140cf"
+        // left: `${getXposition(slide)}px`
       },
       {
-        transform: `translateX(${(getXposition(slide) *
-          checkIfPositiveNumber(currentPosition) +
-          widthOfOneSlide) *
-          checksHowTheSlideShouldTransisionOnHover(
-            getXposition(slide),
-            slide
-          )}px) rotateY(0deg) skewY(0deg)`,
+        transform: `translate(${getXposition(
+          slide
+        )}px, -1%) rotateY(50deg) skewY(11deg) scale(1.01)`,
         boxShadow: "2px 2px 15px blue"
-      },
-
-      {
-        transform: `translateX(${currentPosition}px) rotateY(50deg) skewY(11deg)`,
-        boxShadow: "4px 4px 1px #143140cf"
+        // left: `${widthOfOneSlide * 2}px`
       }
     ],
     {
-      duration: 1000, //milliseconds
+      duration: 500, //milliseconds
       delay: 5,
       easing: "ease-in-out", //'linear', a bezier curve, etc.
       iterations: 1, //or a number
@@ -188,10 +175,8 @@ function checksHowTheSlideShouldTransisionOnHover(xPositionOfTheSlide, slide) {
     mainRight - widthOfOneSlide < slideRight &&
     mainRight - widthOfOneSlide < slideLeft
   ) {
-    console.log("-1");
     return -1;
   } else {
-    console.log("0");
     return 0;
   }
 }
@@ -202,24 +187,21 @@ slidesObjArr.forEach(slide => {
       // showImageModal();
     }, 2000);
 
-    slidesObjArr.forEach(e => {e.animationoftheslide.pauseanimation()
-    e.style.pointerEvents= "none";
-    
+    slidesObjArr.forEach(sli => {
+      sli.animationoftheslide.pauseanimation();
     });
-      slide.animationoftheslide.animationOfTheSlider = changeAnimation(
-        slide.element,
-        slide.xPosition
-    }
+    slide.animationoftheslide.animationOfTheSlider = changeAnimation(
+      slide.element
+    );
   };
 
   slide.element.onmouseout = function() {
     slidesObjArr.forEach(e => {
-      e.style.pointerEvents= "auto";
-        e.playAnimtation();
-        e.animationoftheslide.animationOfTheSlider = animationSlider(
-          e.element,
-          e.xPosition
-        );
+      e.playAnimtation();
+      e.animationoftheslide.animationOfTheSlider = animationSlider(
+        e.element,
+        e.xPosition
+      );
     });
   };
 });
