@@ -78,14 +78,12 @@ const changeAnimation = slide => {
           slide
         )}px) rotateY(50deg) skewY(11deg)`,
         boxShadow: "4px 4px 1px #143140cf"
-        // left: `${getXposition(slide)}px`
       },
       {
         transform: `translate(${getXposition(
           slide
         )}px, -1%) rotateY(50deg) skewY(11deg) scale(1.01)`,
         boxShadow: "2px 2px 15px blue"
-        // left: `${widthOfOneSlide * 2}px`
       }
     ],
     {
@@ -141,30 +139,32 @@ slidesObjArr.forEach(slide => {
   };
 
   slide.element.onmouseout = function() {
-    slidesObjArr.forEach(e => {
-      e.playAnimtation();
-      e.animationoftheslide.animationOfTheSlider = animationSlider(
-        e.element,
-        e.xPosition
-      );
-    });
+    playSliderAnimation();
   };
 });
 
 function showHideSlideModal(element, classToRemove, classToAdd) {
-  element.classList.add(classToAdd);
-  element.classList.remove(classToRemove);
+  element.classList.toggle(classToAdd);
+  element.classList.toggle(classToRemove);
 }
 
-imageModalContainer.onmouseover = function() {};
+imageModalContainer.onmouseover = function() {
+  slidesObjArr.forEach(s => {
+    s.animationoftheslide.pauseanimation();
+  });
+};
 
-// imageModal.onmouseout = function() {
-//   hideImageModal();
-//   slidesObjArr.forEach(e => {
-//     e.animationoftheslide.animationOfTheSlider = animationSlider(
-//       e.element,
-//       e.xPosition
-//     );
-//     e.playAnimtation();
-//   });
-// };
+imageModalContainer.onclick = function() {
+  showHideSlideModal(imageModalContainer, "d-none", "d-flex-centered");
+  playSliderAnimation();
+};
+
+function playSliderAnimation() {
+  slidesObjArr.forEach(e => {
+    e.playAnimtation();
+    e.animationoftheslide.animationOfTheSlider = animationSlider(
+      e.element,
+      e.xPosition
+    );
+  });
+}
