@@ -30,7 +30,7 @@ let sliderContainerCoordinates = projectImagesAndCaptions.getBoundingClientRect(
 function getXposition(slide) {
   let styleOfTheSlide = window.getComputedStyle(slide);
   let matrix = new WebKitCSSMatrix(styleOfTheSlide.webkitTransform);
-  return matrix.m41;
+  return parseInt(matrix.m41, 10);
 }
 
 const animationSlider = (slide, postitionX) => {
@@ -71,11 +71,24 @@ const animationSlider = (slide, postitionX) => {
   return b;
 };
 
-const changeAnimation = (slide, xPosition) => {
-  console.log(
-    widthOfOneSlide *
-      checksHowTheSlideShouldTransisionOnHover(getXposition(slide), slide)
-  );
+function checkIfPositiveNumber(number) {
+  if (number > 0) {
+    return 1;
+  } else if (number < 0) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+
+const changeAnimation = slide => {
+  // console.log(
+  //   widthOfOneSlide *
+  //     checksHowTheSlideShouldTransisionOnHover(getXposition(slide), slide)
+  // );
+
+  const currentPosition = getXposition(slide);
+
   let c = slide.animate(
     [
       {
@@ -83,25 +96,18 @@ const changeAnimation = (slide, xPosition) => {
           slide
         )}px) rotateY(50deg) skewY(11deg)`,
         boxShadow: "4px 4px 1px #143140cf"
+        // left: `${getXposition(slide)}px`
       },
       {
-        transform: `translateX(${getXposition(slide) +
-          widthOfOneSlide *
-            checksHowTheSlideShouldTransisionOnHover(
-              getXposition(slide),
-              slide
-            )}px) rotateY(0deg) skewY(0deg)`,
-        boxShadow: "2px 2px 15px blue"
-      },
-      {
-        transform: `translateX(${getXposition(
+        transform: `translate(${getXposition(
           slide
-        )}px) rotateY(50deg) skewY(11deg)`,
-        boxShadow: "4px 4px 1px #143140cf"
+        )}px, -1%) rotateY(50deg) skewY(11deg) scale(1.01)`,
+        boxShadow: "2px 2px 15px blue"
+        // left: `${widthOfOneSlide * 2}px`
       }
     ],
     {
-      duration: 1000, //milliseconds
+      duration: 500, //milliseconds
       delay: 5,
       easing: "ease-in-out", //'linear', a bezier curve, etc.
       iterations: 1, //or a number
@@ -116,13 +122,13 @@ function SLIDE(element) {
   this.element = element;
   this.xPosition = getXposition(this.element);
   this.animationoftheslide = {
-    test5: animationSlider(this.element, this.xPosition),
-    test6: function() {
-      this.test5.pause();
+    animationOfTheSlider: animationSlider(this.element, this.xPosition),
+    pauseanimation: function() {
+      this.animationOfTheSlider.pause();
     }
   };
   this.playAnimtation = function() {
-    this.animationoftheslide.test5.play();
+    this.animationoftheslide.animationOfTheSlider.play();
   };
 
   // this.moveLeftOrRight = checksHowTheSlideShouldTransisionOnHover(
@@ -156,23 +162,21 @@ function checksHowTheSlideShouldTransisionOnHover(xPositionOfTheSlide, slide) {
   //   "main right" + positionsOfprojectImagesAndCaptions.right,
   //   a.right
   // );
-  console.log("main left" + mainLeft + widthOfOneSlide, slideLeft);
-  console.log("main left" + mainLeft + widthOfOneSlide, slideRight);
+  // console.log("main left" + mainLeft + widthOfOneSlide, slideLeft);
+  // console.log("main left" + mainLeft + widthOfOneSlide, slideRight);
 
   if (
     mainLeft + widthOfOneSlide / 3 > slideLeft &&
     mainLeft + widthOfOneSlide / 3 < slideRight
   ) {
-    console.log("1");
+    // console.log("1");
     return 1;
   } else if (
     mainRight - widthOfOneSlide < slideRight &&
     mainRight - widthOfOneSlide < slideLeft
   ) {
-    console.log("-1");
     return -1;
   } else {
-    console.log("0");
     return 0;
   }
 }
@@ -183,21 +187,26 @@ slidesObjArr.forEach(slide => {
       // showImageModal();
     }, 2000);
 
-    slidesObjArr.forEach(e => e.animationoftheslide.test6());
-
-    slide.animationoftheslide.test5 = changeAnimation(
-      slide.element,
-      slide.xPosition
+    slidesObjArr.forEach(sli => {
+      sli.animationoftheslide.pauseanimation();
+    });
+    slide.animationoftheslide.animationOfTheSlider = changeAnimation(
+      slide.element
     );
   };
 
   slide.element.onmouseout = function() {
     slidesObjArr.forEach(e => {
-      e.animationoftheslide.test5 = animationSlider(e.element, e.xPosition);
       e.playAnimtation();
+      e.animationoftheslide.animationOfTheSlider = animationSlider(
+        e.element,
+        e.xPosition
+      );
     });
   };
 });
+
+let i = 0;
 
 function showImageModal() {
   imageModalContainer.classList.remove("d-none");
@@ -214,7 +223,10 @@ imageModalContainer.onmouseover = function() {};
 imageModal.onmouseout = function() {
   hideImageModal();
   slidesObjArr.forEach(e => {
-    e.animationoftheslide.test5 = animationSlider(e.element, e.xPosition);
+    e.animationoftheslide.animationOfTheSlider = animationSlider(
+      e.element,
+      e.xPosition
+    );
     e.playAnimtation();
   });
 };
