@@ -92,8 +92,8 @@ const changeAnimation = slide => {
       duration: 500, //milliseconds
       delay: 5,
       easing: "ease-in-out", //'linear', a bezier curve, etc.
-      iterations: 1, //or a number
-      direction: "normal", //'normal', 'reverse', etc.
+      iterations: "Infinity", //or a number
+      direction: "alternate", //'normal', 'reverse', etc.
       fill: "forwards" //'backwards', 'both', 'none', 'auto'
     }
   );
