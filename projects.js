@@ -13,7 +13,7 @@ const projectImagesAndCaptions = document.querySelector(".projectImages");
 let html = document.querySelector("html");
 html.style.setProperty("--colNum", imageAndTextCaption.length);
 
-const numberOfSlidesShown = 4.5;
+const numberOfSlidesShown = 5;
 const oneSlideOfProject = document.querySelector(".imageAndTextCaption");
 const styleOfOneSlide = window.getComputedStyle(oneSlideOfProject);
 const widthOfOneSlide = parseInt(styleOfOneSlide.getPropertyValue("width"), 10);
@@ -32,6 +32,8 @@ function getXposition(slide) {
 }
 
 const animationSlider = (slide, postitionX) => {
+  console.log("right", lastslideRight.right);
+  console.log(widthOfOneSlide * restofTheSlides);
   let b = slide.animate(
     [
       {
@@ -44,8 +46,7 @@ const animationSlider = (slide, postitionX) => {
       },
 
       {
-        transform: `translateX(-${lastslideRight.right +
-          widthOfOneSlide -
+        transform: `translateX(-${lastslideRight.right -
           widthOfOneSlide * restofTheSlides}px) rotateY(50deg) skewY(11deg)`,
         boxShadow: "4px 4px 1px #143140cf"
 
@@ -54,12 +55,12 @@ const animationSlider = (slide, postitionX) => {
 
       {
         transform: `translateX(${firstSlideLeft.left -
-          widthOfOneSlide}px) rotateY(50deg) skewY(11deg)`,
+          widthOfOneSlide / 2}px) rotateY(50deg) skewY(11deg)`,
         boxShadow: "4px 4px 1px #143140cf"
       }
     ],
     {
-      duration: 10000, //milliseconds
+      duration: 5000, //milliseconds
       easing: "ease-in-out", //'linear', a bezier curve, etc.
       iterations: Infinity, //or a number
       direction: "alternate", //'normal', 'reverse', etc.

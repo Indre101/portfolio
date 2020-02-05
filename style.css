@@ -509,7 +509,7 @@ footer h4 {
   grid-area: 2/1 / span 1 / span 3;
   display: flex;
   justify-content: center;
-  width: 70vw;
+  width: 80vw;
   height: 50vh;
   margin: 0 auto;
   overflow: hidden;
@@ -518,7 +518,7 @@ footer h4 {
 .projectImages {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(var(--colNum), 25%);
+  grid-template-columns: repeat(var(--colNum), 20%);
   align-items: center;
   overflow: hidden;
   /* animation: moveOver 5s linear forwards 1; */
