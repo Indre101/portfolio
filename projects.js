@@ -31,7 +31,7 @@ function getXposition(slide) {
   return parseInt(matrix.m41, 10);
 }
 
-const animationSlider = (slide, postitionX) => {
+const animationSlider = slide => {
   let b = slide.animate(
     [
       {
@@ -102,7 +102,7 @@ function SLIDE(element) {
   this.element = element;
   this.xPosition = getXposition(this.element);
   this.animationoftheslide = {
-    animationOfTheSlider: animationSlider(this.element, this.xPosition),
+    animationOfTheSlider: animationSlider(this.element),
     pauseanimation: function() {
       this.animationOfTheSlider.pause();
     }
@@ -162,9 +162,61 @@ imageModalContainer.onclick = function() {
 function playSliderAnimation() {
   slidesObjArr.forEach(e => {
     e.playAnimtation();
-    e.animationoftheslide.animationOfTheSlider = animationSlider(
-      e.element,
-      e.xPosition
-    );
+    e.animationoftheslide.animationOfTheSlider = animationSlider(e.element);
   });
 }
+
+const previousArrow = document.querySelector(".previousArrow");
+
+previousArrow.onclick = function() {
+  // let moveAmount = 0;
+  slidesObjArr.forEach(slide => {
+    slide.animationoftheslide.animationOfTheSlider = changeAnimationTest(
+      slide.element
+    );
+  });
+};
+
+console.log("lastslideRight.right", lastslideRight.right);
+const changeAnimationTest = slide => {
+  let move = +300;
+  console.log("slide-move", getXposition(slide) - move);
+  console.log(
+    "alltheslides",
+    lastslideRight.right - widthOfOneSlide * restofTheSlides
+  );
+
+  let b = slide.animate(
+    [
+      {
+        transform: `translateX(${getXposition(slide) -
+          move}px) rotateY(50deg) skewY(11deg)`,
+        boxShadow: "4px 4px 1px #143140cf"
+
+        // opacity: "1"
+      },
+
+      {
+        transform: `translateX(-${lastslideRight.right -
+          widthOfOneSlide * restofTheSlides}px) rotateY(50deg) skewY(11deg)`,
+        boxShadow: "4px 4px 1px #143140cf"
+
+        // opacity: "1"
+      },
+
+      {
+        transform: `translateX(${firstSlideLeft.left -
+          widthOfOneSlide / 2}px) rotateY(50deg) skewY(11deg)`,
+        boxShadow: "4px 4px 1px #143140cf"
+      }
+    ],
+    {
+      duration: 10000, //milliseconds
+      easing: "ease-in-out", //'linear', a bezier curve, etc.
+      iterations: Infinity, //or a number
+      direction: "alternate", //'normal', 'reverse', etc.
+      fill: "forwards" //'backwards', 'both', 'none', 'auto'
+    }
+  );
+  return b;
+};
