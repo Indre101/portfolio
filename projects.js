@@ -32,8 +32,6 @@ function getXposition(slide) {
 }
 
 const animationSlider = (slide, postitionX) => {
-  console.log("right", lastslideRight.right);
-  console.log(widthOfOneSlide * restofTheSlides);
   let b = slide.animate(
     [
       {
@@ -60,7 +58,7 @@ const animationSlider = (slide, postitionX) => {
       }
     ],
     {
-      duration: 5000, //milliseconds
+      duration: 10000, //milliseconds
       easing: "ease-in-out", //'linear', a bezier curve, etc.
       iterations: Infinity, //or a number
       direction: "alternate", //'normal', 'reverse', etc.
@@ -131,16 +129,15 @@ window.onload = function() {
 
 slidesObjArr.forEach(slide => {
   slide.element.onmouseover = function() {
-    setTimeout(() => {
-      // showImageModal();
-    }, 2000);
-
-    slidesObjArr.forEach(sli => {
-      sli.animationoftheslide.pauseanimation();
-    });
+    slidesObjArr.forEach(s => s.animationoftheslide.pauseanimation());
     slide.animationoftheslide.animationOfTheSlider = changeAnimation(
       slide.element
     );
+  };
+
+  slide.element.onclick = function() {
+    console.log("object");
+    showHideSlideModal(imageModalContainer, "d-none", "d-flex-centered");
   };
 
   slide.element.onmouseout = function() {
@@ -154,27 +151,20 @@ slidesObjArr.forEach(slide => {
   };
 });
 
-let i = 0;
-
-function showImageModal() {
-  imageModalContainer.classList.remove("d-none");
-  imageModalContainer.classList.add("d-flex-centered");
-}
-
-function hideImageModal() {
-  imageModalContainer.classList.add("d-none");
-  imageModalContainer.classList.remove("d-flex-centered");
+function showHideSlideModal(element, classToRemove, classToAdd) {
+  element.classList.add(classToAdd);
+  element.classList.remove(classToRemove);
 }
 
 imageModalContainer.onmouseover = function() {};
 
-imageModal.onmouseout = function() {
-  hideImageModal();
-  slidesObjArr.forEach(e => {
-    e.animationoftheslide.animationOfTheSlider = animationSlider(
-      e.element,
-      e.xPosition
-    );
-    e.playAnimtation();
-  });
-};
+// imageModal.onmouseout = function() {
+//   hideImageModal();
+//   slidesObjArr.forEach(e => {
+//     e.animationoftheslide.animationOfTheSlider = animationSlider(
+//       e.element,
+//       e.xPosition
+//     );
+//     e.playAnimtation();
+//   });
+// };
