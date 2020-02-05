@@ -25,8 +25,6 @@ let lastslideRight = imageAndTextCaption[
   imageAndTextCaption.length - 1
 ].getBoundingClientRect();
 
-let sliderContainerCoordinates = projectImagesAndCaptions.getBoundingClientRect();
-
 function getXposition(slide) {
   let styleOfTheSlide = window.getComputedStyle(slide);
   let matrix = new WebKitCSSMatrix(styleOfTheSlide.webkitTransform);
@@ -71,22 +69,7 @@ const animationSlider = (slide, postitionX) => {
   return b;
 };
 
-function checkIfPositiveNumber(number) {
-  if (number > 0) {
-    return 1;
-  } else if (number < 0) {
-    return -1;
-  } else {
-    return 1;
-  }
-}
-
 const changeAnimation = slide => {
-  // console.log(
-  //   widthOfOneSlide *
-  //     checksHowTheSlideShouldTransisionOnHover(getXposition(slide), slide)
-  // );
-
   const currentPosition = getXposition(slide);
 
   let c = slide.animate(
@@ -130,10 +113,6 @@ function SLIDE(element) {
   this.playAnimtation = function() {
     this.animationoftheslide.animationOfTheSlider.play();
   };
-
-  // this.moveLeftOrRight = checksHowTheSlideShouldTransisionOnHover(
-  //   this.xPosition
-  // );
 }
 
 let slidesObjArr = [];
@@ -148,38 +127,6 @@ window.onload = function() {
     e.animationoftheslide;
   });
 };
-
-function checksHowTheSlideShouldTransisionOnHover(xPositionOfTheSlide, slide) {
-  const positionsOfprojectImagesAndCaptions = projectImagesAndCaptions.getBoundingClientRect();
-  const a = slide.getBoundingClientRect();
-  const mainLeft = parseInt(positionsOfprojectImagesAndCaptions.left, 10);
-  const mainRight = parseInt(positionsOfprojectImagesAndCaptions.right, 10);
-  const slideLeft = parseInt(a.left, 10);
-  const slideRight = parseInt(a.right, 10);
-
-  // console.log(positionsOfprojectImagesAndCaptions.left, a.left);
-  // console.log(
-  //   "main right" + positionsOfprojectImagesAndCaptions.right,
-  //   a.right
-  // );
-  // console.log("main left" + mainLeft + widthOfOneSlide, slideLeft);
-  // console.log("main left" + mainLeft + widthOfOneSlide, slideRight);
-
-  if (
-    mainLeft + widthOfOneSlide / 3 > slideLeft &&
-    mainLeft + widthOfOneSlide / 3 < slideRight
-  ) {
-    // console.log("1");
-    return 1;
-  } else if (
-    mainRight - widthOfOneSlide < slideRight &&
-    mainRight - widthOfOneSlide < slideLeft
-  ) {
-    return -1;
-  } else {
-    return 0;
-  }
-}
 
 slidesObjArr.forEach(slide => {
   slide.element.onmouseover = function() {
