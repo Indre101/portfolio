@@ -520,7 +520,7 @@ footer h4 {
   display: grid;
   grid-template-columns: repeat(var(--colNum), 20%);
   align-items: center;
-  overflow: hidden;
+  overflow: scroll;
   /* animation: moveOver 5s linear forwards 1; */
   transition: transform 1s ease-in-out;
   /* animation: moveOver 5s linear forwards 1; */

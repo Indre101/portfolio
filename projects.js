@@ -55,8 +55,8 @@ const animationSlider = slide => {
         boxShadow: "4px 4px 1px #143140cf"
       }
     ], {
-      duration: 10000, //milliseconds
-      easing: "ease-in-out", //'linear', a bezier curve, etc.
+      duration: 16000, //milliseconds
+      easing: "linear", //'linear', a bezier curve, etc.
       iterations: Infinity, //or a number
       direction: "alternate", //'normal', 'reverse', etc.
       fill: "forwards" //'backwards', 'both', 'none', 'auto'
@@ -160,56 +160,3 @@ function playSliderAnimation() {
     e.animationoftheslide.animationOfTheSlider = animationSlider(e.element);
   });
 }
-
-const previousArrow = document.querySelector(".previousArrow");
-
-previousArrow.onclick = function () {
-  // let moveAmount = 0;
-  slidesObjArr.forEach(slide => {
-    slide.animationoftheslide.animationOfTheSlider = changeAnimationTest(
-      slide.element
-    );
-  });
-};
-
-console.log("lastslideRight.right", lastslideRight.right);
-const changeAnimationTest = slide => {
-  let move = +300;
-  console.log("slide-move", getXposition(slide) - move);
-  console.log(
-    "alltheslides",
-    lastslideRight.right - widthOfOneSlide * restofTheSlides
-  );
-
-  let b = slide.animate(
-    [{
-        transform: `translateX(${getXposition(slide) -
-          move}px) rotateY(50deg) skewY(11deg)`,
-        boxShadow: "4px 4px 1px #143140cf"
-
-        // opacity: "1"
-      },
-
-      {
-        transform: `translateX(-${lastslideRight.right -
-          widthOfOneSlide * restofTheSlides}px) rotateY(50deg) skewY(11deg)`,
-        boxShadow: "4px 4px 1px #143140cf"
-
-        // opacity: "1"
-      },
-
-      {
-        transform: `translateX(${firstSlideLeft.left -
-          widthOfOneSlide / 2}px) rotateY(50deg) skewY(11deg)`,
-        boxShadow: "4px 4px 1px #143140cf"
-      }
-    ], {
-      duration: 10000, //milliseconds
-      easing: "ease-in-out", //'linear', a bezier curve, etc.
-      iterations: Infinity, //or a number
-      direction: "alternate", //'normal', 'reverse', etc.
-      fill: "forwards" //'backwards', 'both', 'none', 'auto'
-    }
-  );
-  return b;
-};
