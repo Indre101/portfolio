@@ -287,6 +287,13 @@ h2 {
   }
 }
 
+.projectsPageContainer {
+  background-image: url(./images/photos/bg-1.png);
+  color: #656060;
+
+
+}
+
 .projectsPageContainer,
 .aboutMePageContainer,
 .projectPage {
@@ -294,8 +301,8 @@ h2 {
   display: grid;
   grid-template-columns: var(--grid-columns);
   grid-template-rows: 15% 10% auto;
-  background-color: var(--primary-color);
-  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .projectsPageContainer h2,
@@ -317,7 +324,7 @@ input:nth-child(3) {
 
 .projects {
   display: grid;
-  grid-area: 3/2 / span 1 / span 1;
+  grid-area: 3/1 / span 1 / span 3;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(auto, 300px));
 }
