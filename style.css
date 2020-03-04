@@ -350,6 +350,7 @@ input[type="radio"]+.filterOption:before {
 
 input[type="radio"]+.filterOption[data-clicked="true"]:before {
   background-image: url(./images/icons/coffee-cup-filled.svg);
+
 }
 
 input[type="radio"]+label:hover::before {
