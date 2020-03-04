@@ -333,7 +333,7 @@ input[type="radio"]+label {
 
 }
 
-input[type="radio"]+label:before {
+input[type="radio"]+.filterOption:before {
   display: inline-block;
   position: relative;
   content: " ";
@@ -345,6 +345,11 @@ input[type="radio"]+label:before {
   margin-right: 0.5vw;
   transition: filter 0.3s ease-in-out;
 
+}
+
+
+input[type="radio"]+.filterOption[data-clicked="true"]:before {
+  background-image: url(./images/icons/coffee-cup-filled.svg);
 }
 
 input[type="radio"]+label:hover::before {

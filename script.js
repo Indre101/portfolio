@@ -17,6 +17,7 @@ function init() {
   let i = 0;
   const HTML = getHTMLelements();
   toggleMenu(HTML, i);
+  changeLabelsIcons(HTML)
 
 }
 
@@ -70,7 +71,17 @@ function toggleClassClicked(elementToAddTheClass) {
   elementToAddTheClass.classList.toggle("clicked");
 }
 
+function changeLabelsIcons(HTML) {
 
+  HTML.filterOption.forEach(label => label.addEventListener("click", (event) => changeIcon(event, HTML)))
+
+}
+
+function changeIcon(event, HTML) {
+  HTML.filterOption.forEach(label => label.dataset.clicked = false);
+  event.target.dataset.clicked = "true";
+
+}
 
 // Fetching the projects data
 fetch("projects.json").then(res =>
