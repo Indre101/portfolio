@@ -1,39 +1,51 @@
-const menuButton = document.getElementById("menuButton");
-const openMenuWindow = document.getElementById("openMenuWindow");
-const menuIconDashes = document.querySelectorAll(".dash");
+window.addEventListener("DOMContentLoaded", init());
+
+function getHTMLelements() {
+  const HTML = {};
+
+  HTML.menuButton = document.getElementById("menuButton");
+  HTML.openMenuWindow = document.getElementById("openMenuWindow");
+  HTML.menuIconDashes = document.querySelectorAll(".dash");
+  HTML.projectTemplate = document.querySelector(".projectTemplate").content;
+  HTML.filterOption = document.querySelectorAll(".filterOption");
+  return HTML;
+}
 
 
+
+function init() {
+  let i = 0;
+  const HTML = getHTMLelements();
+  toggleMenu(HTML, i);
 
 }
 
 
-let i = 0;
-
-menuButton.onclick = function () {
-  i++
-  menuIconDashes.forEach(dash => {
-    setTimeout(() => {
-      toggleClassClicked(dash);
-      dash.classList.remove("unclicked")
-    }, 150);
-  });
-
-  animateMenuToslideIn(openMenuWindow);
-
-  if (i == 2) {
-
-    menuIconDashes.forEach(dash => {
+function toggleMenu(HTML, i) {
+  HTML.menuButton.onclick = function () {
+    i++
+    HTML.menuIconDashes.forEach(dash => {
       setTimeout(() => {
-        dash.classList.add("unclicked")
+        toggleClassClicked(dash);
+        dash.classList.remove("unclicked")
       }, 150);
     });
 
-
-
-    animateMenuToslideOut(openMenuWindow)
-    i = 0;
+    animateMenuToslideIn(openMenuWindow);
+    if (i == 2) {
+      HTML.menuIconDashes.forEach(dash => {
+        setTimeout(() => {
+          dash.classList.add("unclicked")
+        }, 150);
+      });
+      animateMenuToslideOut(openMenuWindow)
+      i = 0;
+    }
   }
 }
+
+
+
 
 function animateMenuToslideIn(elementToAnimate) {
   elementToAnimate.classList.add("d-flex");
@@ -60,19 +72,17 @@ function toggleClassClicked(elementToAddTheClass) {
 
 
 
-Fetching the projects data
+// Fetching the projects data
 fetch("projects.json").then(res =>
   res.json()).then(data => {
   data[0].projects.forEach(e => console.log(e.projectName))
 })
 
 
-const projectTemplate = document.querySelector(".projectTemplate").content;
 
 function showPorjectCard() {
 
-  const cln =
-    const projectsCard = document.querySelector(".projectsCard");
+  const projectsCard = document.querySelector(".projectsCard");
   const projectsName = document.querySelector(".projectsName")
   const projectFrontImage = document.querySelector(".projectFrontImage");
 
@@ -93,3 +103,4 @@ function showPorjectCard() {
 
 
   }
+}
