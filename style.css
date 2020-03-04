@@ -287,6 +287,13 @@ h2 {
   }
 }
 
+.projectsPageContainer {
+  background-image: url(./images/photos/bg-1.png);
+  color: #656060;
+
+
+}
+
 .projectsPageContainer,
 .aboutMePageContainer,
 .projectPage {
@@ -294,8 +301,8 @@ h2 {
   display: grid;
   grid-template-columns: var(--grid-columns);
   grid-template-rows: 15% 10% auto;
-  background-color: var(--primary-color);
-  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .projectsPageContainer h2,
@@ -308,6 +315,47 @@ h2 {
 .projectsFilters {
   grid-area: 2/2 / span 1 / span 1;
   color: var(--shadow-color);
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+}
+
+
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]+label {
+  display: flex;
+  align-items: baseline;
+  cursor: pointer;
+
+}
+
+input[type="radio"]+.filterOption:before {
+  display: inline-block;
+  position: relative;
+  content: " ";
+  width: 25px;
+  height: 25px;
+  background-image: url(./images/icons/coffe-cup-lines.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 0.5vw;
+  transition: filter 0.3s ease-in-out;
+
+}
+
+
+input[type="radio"]+.filterOption[data-clicked="true"]:before {
+  background-image: url(./images/icons/coffee-cup-filled.svg);
+
+}
+
+input[type="radio"]+label:hover::before {
+  filter: drop-shadow(1px 1px 1px grey);
+
 }
 
 input:nth-child(2),
@@ -317,7 +365,7 @@ input:nth-child(3) {
 
 .projects {
   display: grid;
-  grid-area: 3/2 / span 1 / span 1;
+  grid-area: 3/1 / span 1 / span 3;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(auto, 300px));
 }
@@ -629,7 +677,8 @@ div.imageAndTextCaption:hover {}
   top: 0;
   width: 100%;
   min-height: 100vh;
-  background-color: #ff7f5078;
+  background-color: #cccc;
+  ;
 }
 
 .d-flex {
@@ -641,9 +690,12 @@ div.imageAndTextCaption:hover {}
 }
 
 .imageModal {
-  width: 500px;
+  width: 60vw;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: white;
+  padding: 2vw;
+  border-radius: var(--border-15);
 }

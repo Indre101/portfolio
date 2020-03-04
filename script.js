@@ -1,59 +1,52 @@
-const menuButton = document.getElementById("menuButton");
-const openMenuWindow = document.getElementById("openMenuWindow");
-const menuIconDashes = document.querySelectorAll(".dash");
-const projectsCard = document.querySelector(".projectsCard");
-const projectsName = document.querySelector(".projectsName")
-const projectFrontImage = document.querySelector(".projectFrontImage");
+window.addEventListener("DOMContentLoaded", init());
 
-console.log(projectsCard);
-projectsCard.onmouseover = function () {
-  projectsName.classList.add("rotateElementToBeVisible")
-  projectsName.classList.remove("rotateElementToBeNotVisible")
+function getHTMLelements() {
+  const HTML = {};
 
-  projectFrontImage.classList.remove("opacityToOne")
-  projectFrontImage.classList.add("projectFrontImageOpacity")
-}
-
-
-projectsCard.onmouseout = function () {
-  projectsName.classList.remove("rotateElementToBeVisible")
-  projectFrontImage.classList.remove("projectFrontImageOpacity")
-  projectsName.classList.add("rotateElementToBeNotVisible")
-  projectFrontImage.classList.add("opacityToOne")
-
-
+  HTML.menuButton = document.getElementById("menuButton");
+  HTML.openMenuWindow = document.getElementById("openMenuWindow");
+  HTML.menuIconDashes = document.querySelectorAll(".dash");
+  HTML.projectTemplate = document.querySelector(".projectTemplate").content;
+  HTML.filterOption = document.querySelectorAll(".filterOption");
+  return HTML;
 }
 
 
 
+function init() {
+  let i = 0;
+  const HTML = getHTMLelements();
+  toggleMenu(HTML, i);
+  changeLabelsIcons(HTML)
 
-let i = 0;
+}
 
-menuButton.onclick = function () {
-  i++
-  menuIconDashes.forEach(dash => {
-    setTimeout(() => {
-      toggleClassClicked(dash);
-      dash.classList.remove("unclicked")
-    }, 150);
-  });
 
-  animateMenuToslideIn(openMenuWindow);
-
-  if (i == 2) {
-
-    menuIconDashes.forEach(dash => {
+function toggleMenu(HTML, i) {
+  HTML.menuButton.onclick = function () {
+    i++
+    HTML.menuIconDashes.forEach(dash => {
       setTimeout(() => {
-        dash.classList.add("unclicked")
+        toggleClassClicked(dash);
+        dash.classList.remove("unclicked")
       }, 150);
     });
 
-
-
-    animateMenuToslideOut(openMenuWindow)
-    i = 0;
+    animateMenuToslideIn(openMenuWindow);
+    if (i == 2) {
+      HTML.menuIconDashes.forEach(dash => {
+        setTimeout(() => {
+          dash.classList.add("unclicked")
+        }, 150);
+      });
+      animateMenuToslideOut(openMenuWindow)
+      i = 0;
+    }
   }
 }
+
+
+
 
 function animateMenuToslideIn(elementToAnimate) {
   elementToAnimate.classList.add("d-flex");
@@ -78,14 +71,47 @@ function toggleClassClicked(elementToAddTheClass) {
   elementToAddTheClass.classList.toggle("clicked");
 }
 
+function changeLabelsIcons(HTML) {
 
+  HTML.filterOption.forEach(label => label.addEventListener("click", (event) => changeIcon(event, HTML)))
 
+}
 
+function changeIcon(event, HTML) {
+  HTML.filterOption.forEach(label => label.dataset.clicked = false);
+  event.target.dataset.clicked = "true";
 
-
+}
 
 // Fetching the projects data
-// fetch("projects.json").then(res =>
-//   res.json()).then(data => {
-//   data[0].projects.forEach(e => console.log(e.projectName))
-// })
+fetch("projects.json").then(res =>
+  res.json()).then(data => {
+  data[0].projects.forEach(e => console.log(e.projectName))
+})
+
+
+
+function showPorjectCard() {
+
+  const projectsCard = document.querySelector(".projectsCard");
+  const projectsName = document.querySelector(".projectsName")
+  const projectFrontImage = document.querySelector(".projectFrontImage");
+
+  projectsCard.onmouseover = function () {
+    projectsName.classList.add("rotateElementToBeVisible")
+    projectsName.classList.remove("rotateElementToBeNotVisible")
+
+    projectFrontImage.classList.remove("opacityToOne")
+    projectFrontImage.classList.add("projectFrontImageOpacity")
+  }
+
+
+  projectsCard.onmouseout = function () {
+    projectsName.classList.remove("rotateElementToBeVisible")
+    projectFrontImage.classList.remove("projectFrontImageOpacity")
+    projectsName.classList.add("rotateElementToBeNotVisible")
+    projectFrontImage.classList.add("opacityToOne")
+
+
+  }
+}
