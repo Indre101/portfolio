@@ -1,100 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Home</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css">
-  <title>Home</title>
-</head>
-
-<body>
-  <div class="landingPageContainer">
-    <div id="menuButton" class="menuBtnContainer">
-      <div class="dash"></div>
-      <div class="dash"></div>
-      <div class="dash"></div>
-    </div>
-    <div class="catWithGlassses">
-      <img class="catImage" src="./images/photos/grumpy.png" alt="Cat image funny">
-      <img class="glassess align-justify-self-center" src="./images/photos/glasses.png" alt="Glasses for cat">
-    </div>
-    <article class="welcomeMessage align-justify-self-center">
-      <h1>Hi, I am Indre</h1>
-      <h4>Passionate about front end development.<br>
-        Great sense of humour</h4>
-    </article>
-  </div>
-
-  <article id="openMenuWindow" class="openMenuWindow d-none slideDownAnimation">
-    <a href="">
-      <h2>Home</h2>
-    </a>
-    <a href="">
-      <h2>About Me</h2>
-    </a>
-    <a href="">
-      <h2>Projects</h2>
-    </a>
-    <a href="">
-      <h2>Contact</h2>
-    </a>
-  </article>
-
-  <section class="projectsPageContainer">
-    <h2>Projects</h2>
-    <div class="projectsFilters align-justify-self-center">
-      <input type="checkbox" name="School projects" value="school"> School
-      <input type="checkbox" name="Personal projects" value="personal"> Personal
-      <input type="checkbox" name="All projects" value="personal"> All
-    </div>
-    <div class="projects">
-      <article class="project">
-        <div class="projectsCard d-flex-centered">
-          <div class=" projectsName d-flex-centered">Adventures with chad</div>
-          <div class="cardBackandFront d-flex-centered">
-            <img class="projectFrontImage" src="./images/photos/project-images/chad.png" alt="Image">
-          </div>
-
-
-        </div>
-        <h3 class="typeOfProject"> Wesbite/Animation</h3>
-        <a class="d-flex-centered" href=""><img class="linkIcon" src="./images/icons/link-icon.png"
-            alt="Link to the page icon">
-          <h4>Link to project</h4>
-        </a>
+  <body>
+    <div class="landingPageContainer">
+      <div id="menuButton" class="menuBtnContainer">
+        <div class="dash"></div>
+        <div class="dash"></div>
+        <div class="dash"></div>
+      </div>
+      <div class="catWithGlassses">
+        <img
+          class="catImage"
+          src="./images/photos/grumpy.png"
+          alt="Cat image funny"
+        />
+        <img
+          class="glassess align-justify-self-center"
+          src="./images/photos/glasses.png"
+          alt="Glasses for cat"
+        />
+      </div>
+      <article class="welcomeMessage align-justify-self-center">
+        <h1>Hi, I am Indre</h1>
+        <h4>
+          Passionate about front end development.<br />
+          Great sense of humour
+        </h4>
       </article>
     </div>
-  </section>
 
+    <article
+      id="openMenuWindow"
+      class="openMenuWindow d-none slideDownAnimation"
+    >
+      <a href="">
+        <h2>Home</h2>
+      </a>
+      <a href="">
+        <h2>About Me</h2>
+      </a>
+      <a href="">
+        <h2>Projects</h2>
+      </a>
+      <a href="">
+        <h2>Contact</h2>
+      </a>
+    </article>
 
-  <section class="aboutMePageContainer">
-    <h2>About me</h2>
-
-    <div class="infoAboutMe">
-      <img src="./images/photos/indre-1.png" alt="Image of me">
-      <div class="text">
-        <ul class="factsAboutMe">
-          <li>I am a student at KEA</li>
-          <li> I enjoy coding with JS</li>
-          <li>I don’t like talking about myself</li>
-          <li>Random fact</li>
-          <li>Random fact</li>
-        </ul>
+    <section class="projectsPageContainer">
+      <h2>Projects</h2>
+      <div class="projectsFilters align-justify-self-center">
+        <div class="option ">
+          <input id="All" type="radio" name="projects" value="personal" />
+          <label for="All">All</label>
+        </div>
+        <div class="option">
+          <input id="school" type="radio" name="projects" value="school" />
+          <label for="school">School</label>
+        </div>
+        <div class="option ">
+          <input id="personal" type="radio" name="projects" value="personal" />
+          <label for="personal">Personal</label>
+        </div>
       </div>
-    </div>
-    <footer>
-      <div class="icons">
-        <img src="./images/icons/icon-one.png" alt="Icon of social media">
-        <img src="./images/icons/icon-2.png" alt="Icon of social media">
+      <div class="projects">
+        <template class="projectTemplate">
+          <article class="project">
+            <div class="projectsCard d-flex-centered">
+              <div class=" projectsName d-flex-centered">
+                Adventures with chad
+              </div>
+              <div class="cardBackandFront d-flex-centered">
+                <img
+                  class="projectFrontImage"
+                  src="./images/photos/project-images/chad.png"
+                  alt="Image"
+                />
+              </div>
+            </div>
+            <h3 class="typeOfProject">Wesbite/Animation</h3>
+            <a class="d-flex-centered" href=""
+              ><img
+                class="linkIcon"
+                src="./images/icons/link-icon.png"
+                alt="Link to the page icon"
+              />
+              <h4>Link to project</h4>
+            </a>
+          </article>
+        </template>
       </div>
-      <h4>email: zygaityte.indre@gmail.com</h4>
-    </footer>
-  </section>
+    </section>
 
+    <section class="aboutMePageContainer">
+      <h2>About me</h2>
 
-  <script src="script.js"></script>
-</body>
+      <div class="infoAboutMe">
+        <img src="./images/photos/indre-1.png" alt="Image of me" />
+        <div class="text">
+          <ul class="factsAboutMe">
+            <li>I am a student at KEA</li>
+            <li>I enjoy coding with JS</li>
+            <li>I don’t like talking about myself</li>
+            <li>Random fact</li>
+            <li>Random fact</li>
+          </ul>
+        </div>
+      </div>
+      <footer>
+        <div class="icons">
+          <img src="./images/icons/icon-one.png" alt="Icon of social media" />
+          <img src="./images/icons/icon-2.png" alt="Icon of social media" />
+        </div>
+        <h4>email: zygaityte.indre@gmail.com</h4>
+      </footer>
+    </section>
 
+    <!-- <script src="script.js"></script> -->
+  </body>
 </html>

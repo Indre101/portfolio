@@ -1,30 +1,10 @@
 const menuButton = document.getElementById("menuButton");
 const openMenuWindow = document.getElementById("openMenuWindow");
 const menuIconDashes = document.querySelectorAll(".dash");
-const projectsCard = document.querySelector(".projectsCard");
-const projectsName = document.querySelector(".projectsName")
-const projectFrontImage = document.querySelector(".projectFrontImage");
 
-console.log(projectsCard);
-projectsCard.onmouseover = function () {
-  projectsName.classList.add("rotateElementToBeVisible")
-  projectsName.classList.remove("rotateElementToBeNotVisible")
-
-  projectFrontImage.classList.remove("opacityToOne")
-  projectFrontImage.classList.add("projectFrontImageOpacity")
-}
-
-
-projectsCard.onmouseout = function () {
-  projectsName.classList.remove("rotateElementToBeVisible")
-  projectFrontImage.classList.remove("projectFrontImageOpacity")
-  projectsName.classList.add("rotateElementToBeNotVisible")
-  projectFrontImage.classList.add("opacityToOne")
 
 
 }
-
-
 
 
 let i = 0;
@@ -80,12 +60,36 @@ function toggleClassClicked(elementToAddTheClass) {
 
 
 
+Fetching the projects data
+fetch("projects.json").then(res =>
+  res.json()).then(data => {
+  data[0].projects.forEach(e => console.log(e.projectName))
+})
 
 
+const projectTemplate = document.querySelector(".projectTemplate").content;
+
+function showPorjectCard() {
+
+  const cln =
+    const projectsCard = document.querySelector(".projectsCard");
+  const projectsName = document.querySelector(".projectsName")
+  const projectFrontImage = document.querySelector(".projectFrontImage");
+
+  projectsCard.onmouseover = function () {
+    projectsName.classList.add("rotateElementToBeVisible")
+    projectsName.classList.remove("rotateElementToBeNotVisible")
+
+    projectFrontImage.classList.remove("opacityToOne")
+    projectFrontImage.classList.add("projectFrontImageOpacity")
+  }
 
 
-// Fetching the projects data
-// fetch("projects.json").then(res =>
-//   res.json()).then(data => {
-//   data[0].projects.forEach(e => console.log(e.projectName))
-// })
+  projectsCard.onmouseout = function () {
+    projectsName.classList.remove("rotateElementToBeVisible")
+    projectFrontImage.classList.remove("projectFrontImageOpacity")
+    projectsName.classList.add("rotateElementToBeNotVisible")
+    projectFrontImage.classList.add("opacityToOne")
+
+
+  }
