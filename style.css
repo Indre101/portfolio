@@ -70,8 +70,6 @@ MENU
 
 
 
-
-
 .dash {
   width: 40px;
   background-color: var(--accent-color);
@@ -94,8 +92,6 @@ MENU
 
 
 
-/* Unlcicked */
-
 .dash:first-child.clicked {
   animation: positionAblsolute 0.5s ease-in-out 1 forwards;
 }
@@ -114,68 +110,6 @@ MENU
   animation: middleDash 0.3s ease-in-out 1 forwards;
 }
 
-
-
-.welcomeMessage {
-  grid-area: 1/1 / span 3 / span 3;
-}
-
-.catWithGlassses {
-  grid-area: 3/ 3 / span 1 / span 1;
-  justify-self: flex-end;
-  align-self: flex-end;
-  display: grid;
-  grid-template-columns: 1;
-  z-index: 1000;
-}
-
-.catImage {
-  grid-area: 1/ 1 / span 1 / span 1;
-  width: 25vw;
-  transform: rotate(-90deg);
-  object-fit: contain;
-  filter: var(--shadow);
-  animation: slideDwonCat 1.2s ease-in-out forwards 1;
-  opacity: 0;
-}
-
-
-
-.glassess {
-  grid-area: 1/ 1 / span 1 / span 1;
-  width: 12vw;
-  transform: rotate(-90deg);
-  animation: glassesOn 1s 1.2s ease-in-out forwards 1;
-  filter: var(--shadow);
-  opacity: 0;
-}
-
-
-
-h1 {
-  font-size: 5.5vh;
-  text-align: center;
-  background: linear-gradient(to left,
-      black 20%,
-      var(--accent-color) 10%,
-      var(--accent-color) 10%,
-      black 80%);
-  background-size: 200% auto;
-  color: black;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 1.5s 2.3s linear 1 forwards;
-}
-
-
-
-
-
-.welcomeMessage>h4 {
-  color: var(--shadow-color);
-  font-size: 1.5vh;
-}
 
 .openMenuWindow {
   width: 100%;
@@ -232,6 +166,110 @@ h2 {
   animation: slideDown 0.5s linear forwards 1;
 }
 
+
+/* ========
+LANDING PAGE
+========
+ */
+
+.welcomeMessage {
+  grid-area: 1/1 / span 3 / span 3;
+}
+
+.catWithGlassses {
+  grid-area: 3/ 3 / span 1 / span 1;
+  justify-self: flex-end;
+  align-self: flex-end;
+  display: grid;
+  grid-template-columns: 1;
+  z-index: 1000;
+}
+
+.catImage {
+  grid-area: 1/ 1 / span 1 / span 1;
+  width: 25vw;
+  transform: rotate(-90deg);
+  object-fit: contain;
+  filter: var(--shadow);
+  animation: slideDwonCat 1.2s ease-in-out forwards 1;
+  opacity: 0;
+}
+
+.glassess {
+  opacity: 0;
+  transform: rotate(-90deg) translate(.5vh, 1vw);
+  animation: glassesOn 1.2s 1.2s cubic-bezier(.98, .96, .41, .96) forwards 1;
+
+}
+
+.catsPaw {
+  justify-self: flex-end;
+  align-self: flex-end;
+  animation: getOnGlasses 1s 1.6s cubic-bezier(.98, .96, .41, .96) forwards 1;
+  z-index: 100;
+  transform: translateX(20vw) rotate(-120deg);
+
+
+}
+
+@keyframes getOnGlasses {
+
+
+  50% {
+    transform: translate(-2vw, 15vh) rotate(-90deg);
+
+  }
+
+  95 {
+    transform: translate(20vw, -5vh) rotate(-120deg);
+
+  }
+
+  100% {
+    transform: translate(20vw, -5vh) rotate(-120deg);
+
+  }
+}
+
+.glassess,
+.catsPaw {
+  grid-area: 1/ 1 / span 1 / span 1;
+  width: 12vw;
+  filter: var(--shadow);
+}
+
+
+
+h1 {
+  font-size: 5.5vh;
+  text-align: center;
+  background: linear-gradient(to left,
+      black 20%,
+      var(--accent-color) 10%,
+      var(--accent-color) 10%,
+      black 80%);
+  background-size: 200% auto;
+  color: black;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 1.5s 2.3s linear 1 forwards;
+}
+
+
+
+
+
+.welcomeMessage>h4 {
+  color: var(--shadow-color);
+  font-size: 1.5vh;
+}
+
+
+
+/* ======
+PROJECTS PAGE
+========= */
 
 
 .projectsPageContainer {
@@ -317,6 +355,11 @@ input:nth-child(3) {
   grid-template-columns: repeat(auto-fill, minmax(auto, 300px));
 }
 
+
+/* ======
+PROJECT CARD 
+======*/
+
 .project {
   justify-self: center;
   display: flex;
@@ -339,16 +382,6 @@ input:nth-child(3) {
 
 .opacityToOne {
   animation: opacityToOne 1s linear forwards 1;
-}
-
-@keyframes opacityToOne {
-  0% {
-    opacity: 0.5;
-  }
-
-  100% {
-    opacity: 1;
-  }
 }
 
 .cardBackandFront {
@@ -630,6 +663,18 @@ div.imageAndTextCaption:hover {}
 Animations
 =========== */
 
+
+
+@keyframes opacityToOne {
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes rotateBackCircle {
   100% {
     transform: none;
@@ -713,6 +758,15 @@ Animations
 @keyframes glassesOn {
   0% {
     transform: translateY(-100vh) rotate(-180deg);
+  }
+
+
+  75% {
+    transform: translateY(5vh) rotate(-90deg);
+  }
+
+  95% {
+    transform: translateY(5vh) rotate(-90deg);
   }
 
   100% {
