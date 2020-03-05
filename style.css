@@ -22,6 +22,10 @@
   --colNum: 9;
 }
 
+/* =========
+Layouts
+========= */
+
 .d-flex-centered {
   display: flex;
   justify-content: center;
@@ -38,6 +42,10 @@
   display: grid;
   grid-template-columns: var(--grid-columns);
 }
+
+/* ===========
+MENU
+======== */
 
 .menuBtnContainer {
   margin: 4vh;
@@ -60,6 +68,10 @@
   filter: var(--shadow);
 }
 
+
+
+
+
 .dash {
   width: 40px;
   background-color: var(--accent-color);
@@ -75,29 +87,12 @@
   animation: firstdashBacktoOriginalPosition 0.5s ease-in-out 1 forwards;
 }
 
-@keyframes firstdashBacktoOriginalPosition {
-  0% {
-    transform: translateY(17px);
-  }
-
-  100% {
-    transform: rotate(0deg);
-  }
-}
 
 .dash:nth-child(3).unclicked {
   animation: thirddashBacktoOriginalPosition 0.5s ease-in-out 1 forwards;
 }
 
-@keyframes thirddashBacktoOriginalPosition {
-  0% {
-    transform: translateY(-17px);
-  }
 
-  100% {
-    transform: rotate(0deg);
-  }
-}
 
 /* Unlcicked */
 
@@ -105,41 +100,21 @@
   animation: positionAblsolute 0.5s ease-in-out 1 forwards;
 }
 
-@keyframes positionAblsolute {
-  70% {
-    transform: translateY(17px);
-  }
 
-  100% {
-    transform: rotate(-45deg);
-  }
-}
 
 .dash:nth-child(3).clicked {
   animation: thirDash 0.5s ease-in-out 1 forwards;
 }
 
-@keyframes thirDash {
-  70% {
-    transform: translateY(-17px);
-  }
 
-  100% {
-    transform: rotate(45deg) translate(-4px, -2px);
-  }
-}
+
+
 
 .dash:nth-child(2).clicked {
   animation: middleDash 0.3s ease-in-out 1 forwards;
 }
 
-@keyframes middleDash {
-  100% {
-    opacity: 0;
-    visibility: hidden;
-    display: none;
-  }
-}
+
 
 .welcomeMessage {
   grid-area: 1/1 / span 3 / span 3;
@@ -164,16 +139,7 @@
   opacity: 0;
 }
 
-@keyframes slideDwonCat {
-  0% {
-    transform: translateX(100vw) rotate(-90deg);
-    opacity: 1;
-  }
 
-  100% {
-    opacity: 1;
-  }
-}
 
 .glassess {
   grid-area: 1/ 1 / span 1 / span 1;
@@ -184,15 +150,7 @@
   opacity: 0;
 }
 
-@keyframes glassesOn {
-  0% {
-    transform: translateY(-100vh) rotate(-180deg);
-  }
 
-  100% {
-    opacity: 1;
-  }
-}
 
 h1 {
   font-size: 5.5vh;
@@ -210,11 +168,9 @@ h1 {
   animation: shine 1.5s 2.3s linear 1 forwards;
 }
 
-@keyframes shine {
-  to {
-    background-position: -230% center;
-  }
-}
+
+
+
 
 .welcomeMessage>h4 {
   color: var(--shadow-color);
@@ -271,21 +227,12 @@ h2 {
   animation: slideUp 0.5s linear forwards 1;
 }
 
-@keyframes slideUp {
-  0% {
-    transform: translateY(100vh);
-  }
-}
 
 .slideDownAnimation {
   animation: slideDown 0.5s linear forwards 1;
 }
 
-@keyframes slideDown {
-  100% {
-    transform: translateY(100vh);
-  }
-}
+
 
 .projectsPageContainer {
   background-image: url(./images/photos/bg-1.png);
@@ -333,7 +280,8 @@ input[type="radio"]+label {
 
 }
 
-input[type="radio"]+.filterOption:before {
+/* Changes the radio input  */
+.filterOption:before {
   display: inline-block;
   position: relative;
   content: " ";
@@ -347,13 +295,12 @@ input[type="radio"]+.filterOption:before {
 
 }
 
-
-input[type="radio"]+.filterOption[data-clicked="true"]:before {
+.filterOption[data-clicked="true"]:before {
   background-image: url(./images/icons/coffee-cup-filled.svg);
 
 }
 
-input[type="radio"]+label:hover::before {
+.filterOption:hover::before {
   filter: drop-shadow(1px 1px 1px grey);
 
 }
@@ -405,8 +352,8 @@ input:nth-child(3) {
 }
 
 .cardBackandFront {
-  height: 300px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   border-radius: var(--border-15);
 }
 
@@ -430,25 +377,13 @@ input:nth-child(3) {
   animation: rotateBackCircle 0.5s ease-in forwards 1;
 }
 
-@keyframes rotateBackCircle {
-  100% {
-    transform: none;
-  }
-}
+
 
 .rotateElementToBeNotVisible {
   animation: rotateElementToBeNotVisible 0.5s ease-in forwards 1;
 }
 
-@keyframes rotateElementToBeNotVisible {
-  0% {
-    transform: none;
-  }
 
-  100% {
-    transform: rotateY(90deg);
-  }
-}
 
 .typeOfProject {
   margin: 1vh 0;
@@ -577,12 +512,6 @@ footer h4 {
 
 }
 
-@keyframes moveOver {
-  100% {
-    transform: translateX(-100vw);
-  }
-}
-
 
 
 div.imageAndTextCaption {
@@ -639,13 +568,9 @@ div.imageAndTextCaption:hover {}
   animation: changeWidths 1s ease-in-out forwards 1;
 }
 
-@keyframes changeWidths {
-  0% {
-    width: 0vw;
-  }
 
 
-}
+
 
 .textCaption {
   grid-area: 1/1 / span 1 / span 2;
@@ -698,4 +623,127 @@ div.imageAndTextCaption:hover {}
   background-color: white;
   padding: 2vw;
   border-radius: var(--border-15);
+}
+
+
+/* ========
+Animations
+=========== */
+
+@keyframes rotateBackCircle {
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes moveOver {
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+
+@keyframes changeWidths {
+  0% {
+    width: 0vw;
+  }
+
+
+}
+
+@keyframes firstdashBacktoOriginalPosition {
+  0% {
+    transform: translateY(17px);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes thirddashBacktoOriginalPosition {
+  0% {
+    transform: translateY(-17px);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes positionAblsolute {
+  70% {
+    transform: translateY(17px);
+  }
+
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes thirDash {
+  70% {
+    transform: translateY(-17px);
+  }
+
+  100% {
+    transform: rotate(45deg) translate(-4px, -2px);
+  }
+}
+
+@keyframes middleDash {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+
+@keyframes slideDwonCat {
+  0% {
+    transform: translateX(100vw) rotate(-90deg);
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes glassesOn {
+  0% {
+    transform: translateY(-100vh) rotate(-180deg);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: -230% center;
+  }
+}
+
+@keyframes rotateElementToBeNotVisible {
+  0% {
+    transform: none;
+  }
+
+  100% {
+    transform: rotateY(90deg);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes slideDown {
+  100% {
+    transform: translateY(100vh);
+  }
 }
