@@ -198,7 +198,7 @@ LANDING PAGE
 .glassess {
   opacity: 0;
   transform: rotate(-90deg) translate(.5vh, 1vw);
-  animation: glassesOn 1.2s 1.2s cubic-bezier(.98, .96, .41, .96) forwards 1;
+  animation: glassesOn 1.3s 1.2s ease-in-out forwards 1;
 
 }
 
@@ -221,7 +221,7 @@ LANDING PAGE
   }
 
   95 {
-    transform: translate(20vw, -5vh) rotate(-120deg);
+    transform: translate(20vw, -10vh) rotate(-120deg);
 
   }
 
@@ -361,80 +361,53 @@ PROJECT CARD
 ======*/
 
 .project {
-  justify-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.projectFrontImage {
-  width: -webkit-fill-available;
-  object-fit: contain;
-  object-position: center;
-  transition: opacity 1s;
-  border-radius: inherit;
-  box-shadow: var(--box-shadow);
-}
-
-.projectFrontImageOpacity {
-  opacity: 0.5;
-}
-
-.opacityToOne {
-  animation: opacityToOne 1s linear forwards 1;
-}
-
-.cardBackandFront {
-  height: 200px;
   width: 200px;
-  border-radius: var(--border-15);
+  border: 1px solid;
+  height: 250px;
+  justify-self: center;
+
 }
 
-.projectsName {
-  background-color: var(--accent-color);
-  color: white;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  position: absolute;
-  transform: rotateY(90deg);
-  z-index: 10;
-  text-align: center;
-  transition: transform 0.5s;
-  perspective: 1000px;
+
+.projectCard {
+  position: relative;
+  height: inherit;
+  width: inherit;
   transform-style: preserve-3d;
-  box-shadow: var(--box-shadow);
-}
-
-.rotateElementToBeVisible {
-  animation: rotateBackCircle 0.5s ease-in forwards 1;
-}
+  transition: transform 3s ease-in-out;
 
 
-
-.rotateElementToBeNotVisible {
-  animation: rotateElementToBeNotVisible 0.5s ease-in forwards 1;
 }
 
 
-
-.typeOfProject {
-  margin: 1vh 0;
-  color: var(--shadow-color);
+.project:hover .projectCard {
+  transform: rotateY(.5turn);
 }
 
-.linkIcon {
-  width: 2vh;
+
+.cardBack,
+.projectCardFront {
+  position: absolute;
+
+  transform-style: preserve-3d;
+  width: inherit;
+  height: inherit;
+  backface-visibility: hidden;
 }
 
-a.d-flex-centered {
-  color: var(--secondary-color);
-  text-decoration: none;
+.projectCardFront {}
+
+.cardBack {
+  background-color: white;
+  transform: rotateY(.5turn);
+
 }
 
-.d-flex-centered h4 {
-  margin: 0 1vh;
-  color: #7997c4;
+.projectCardFront {
+
+  background-image: url(./chad.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* ABOUT ME */
