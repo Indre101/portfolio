@@ -362,10 +362,9 @@ PROJECT CARD
 
 .project {
   width: 200px;
-  border: 1px solid;
   height: 250px;
   justify-self: center;
-
+  cursor: pointer;
 }
 
 
@@ -374,7 +373,7 @@ PROJECT CARD
   height: inherit;
   width: inherit;
   transform-style: preserve-3d;
-  transition: transform 3s ease-in-out;
+  transition: transform 1s ease-in-out;
 
 
 }
@@ -384,30 +383,117 @@ PROJECT CARD
   transform: rotateY(.5turn);
 }
 
+.project:hover .projectCardFront {
+  filter: none;
+}
+
+.projectImage {
+  filter: grayscale(1);
+  width: inherit;
+  height: inherit;
+  position: absolute;
+}
+
+
+
 
 .cardBack,
 .projectCardFront {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-
   transform-style: preserve-3d;
   width: inherit;
   height: inherit;
   backface-visibility: hidden;
 }
 
-.projectCardFront {}
 
 .cardBack {
-  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+  background-color: rgb(193, 193, 193);
+  width: inherit;
+  height: inherit;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   transform: rotateY(.5turn);
+}
+
+
+.cardBack h3 {
+  grid-area: 1/1/ span 2/ span 1;
+  transform: translateZ(4vw);
+  font-size: 1vw;
+  width: 80%;
+  transform-style: preserve-3d;
+  color: rgba(0, 0, 0, 0.719);
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  padding: 3.5% 1.5%;
+  justify-self: center;
+  display: flex;
+}
+
+.cardBack h5 {
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+
+.cardBack h3::before {
+  content: "";
+  border: 1px solid #000000c9;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(-2vw);
 
 }
 
 .projectCardFront {
-
-  background-image: url(./chad.png);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
+
+}
+
+.text {
+  border: 1px solid white;
+  color: white;
+  transform: translateZ(4vw);
+  padding: 3.5% 1.5%;
+  text-align: center;
+
+}
+
+.shortInfo {
+  background-color: rgba(12, 12, 12, 0.596);
+  transform-style: preserve-3d;
+  transform: translateZ(4vw);
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.linkContainer {
+  grid-area: 2/1/ span 1/ span 1;
+  display: flex;
+  margin-bottom: 10%;
+  justify-content: center;
+  align-self: flex-end
+}
+
+.linkContainer img {
+  width: 8%;
+  margin-left: 2%;
+  color: aliceblue;
+  object-fit: contain;
 }
 
 /* ABOUT ME */
@@ -415,6 +501,7 @@ PROJECT CARD
   background-color: white;
   grid-auto-rows: max-content;
 }
+
 
 .infoAboutMe {
   grid-area: 3/2 / span 1 / span 1;
@@ -734,9 +821,6 @@ Animations
   }
 
 
-  75% {
-    transform: translateY(5vh) rotate(-90deg);
-  }
 
   95% {
     transform: translateY(5vh) rotate(-90deg);
