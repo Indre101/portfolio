@@ -146,7 +146,6 @@ MENU
 
 h2 {
   font-size: 4vh;
-  margin: 3vh;
 }
 
 .d-flex {
@@ -285,7 +284,7 @@ PROJECTS PAGE
   min-height: 100vh;
   display: grid;
   grid-template-columns: var(--grid-columns);
-  grid-template-rows: 15% 10% auto;
+  grid-template-rows: 10% 10% auto;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -293,6 +292,7 @@ PROJECTS PAGE
 .projectsPageContainer h2,
 .aboutMePageContainer h2 {
   grid-area: 1/2 / span 1 / span 1;
+  color: black;
   align-self: flex-end;
   justify-self: center;
 }
@@ -352,7 +352,10 @@ input:nth-child(3) {
   display: grid;
   grid-area: 3/1 / span 1 / span 3;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(auto, 300px));
+  grid-template-columns: repeat(auto-fill, minmax(auto, 220px));
+  height: 70vh;
+  grid-gap: 1vw 0;
+  overflow: scroll;
 }
 
 
@@ -373,7 +376,7 @@ PROJECT CARD
   height: inherit;
   width: inherit;
   transform-style: preserve-3d;
-  transition: transform 1s ease-in-out;
+  transition: transform 1s cubic-bezier(0, .31, .41, .96);
 
 
 }

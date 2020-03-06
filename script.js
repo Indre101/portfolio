@@ -83,24 +83,9 @@ function getData(HTML) {
 
 function showPorjectCard(project, HTML) {
   const projectsCardCln = HTML.projectTemplate.cloneNode(true);
-  const projectsCard = projectsCardCln.querySelector(".projectsCard");
-  const projectsName = projectsCardCln.querySelector(".projectsName");
-  const projectFrontImage = projectsCardCln.querySelector(".projectFrontImage");
-
-  projectsCard.onmouseover = function() {
-    projectsName.classList.add("rotateElementToBeVisible");
-    projectsName.classList.remove("rotateElementToBeNotVisible");
-
-    projectFrontImage.classList.remove("opacityToOne");
-    projectFrontImage.classList.add("projectFrontImageOpacity");
-  };
-
-  projectsCard.onmouseout = function() {
-    projectsName.classList.remove("rotateElementToBeVisible");
-    projectFrontImage.classList.remove("projectFrontImageOpacity");
-    projectsName.classList.add("rotateElementToBeNotVisible");
-    projectFrontImage.classList.add("opacityToOne");
-  };
+  // const projectsCard = projectsCardCln.querySelector(".projectsCard");
+  // const projectsName = projectsCardCln.querySelector(".projectsName");
+  // const projectFrontImage = projectsCardCln.querySelector(".projectFrontImage");
 
   HTML.projects.appendChild(projectsCardCln);
 }
