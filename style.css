@@ -352,8 +352,11 @@ input:nth-child(3) {
   display: grid;
   grid-area: 3/1 / span 1 / span 3;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(auto, 220px));
   height: 70vh;
+  grid-template-columns: repeat(4, 1fr);
+  width: 80%;
+  justify-self: center;
+  /* grid-template-columns: repeat(auto-fill, minmax(auto, 220px)); */
   grid-gap: 1vw 0;
   overflow: scroll;
 }
@@ -524,7 +527,7 @@ ul {
 }
 
 .factsAboutMe li {
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   color: white;
   background-color: black;
   padding: 0.4vw;
@@ -533,7 +536,7 @@ ul {
 }
 
 .factsAboutMe li:nth-child(even) {
-  margin: 2.5vw 15vw;
+  margin: 0 0 0 15vw;
 }
 
 .factsAboutMe li:nth-child(odd) {
@@ -543,6 +546,14 @@ ul {
 .factsAboutMe li:first-child {
   margin: 0;
 }
+
+
+.factsAboutMe li:last-child {
+  margin: 3vw 0;
+  cursor: pointer;
+  background-color: green;
+}
+
 
 footer {
   grid-area: 4/1 / span 1 / span 3;
