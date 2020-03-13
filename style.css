@@ -526,7 +526,8 @@ ul {
   list-style: none;
 }
 
-.factsAboutMe li {
+.factsAboutMe li,
+.liButton {
   opacity: 0;
   font-size: 1.2vw;
   color: white;
@@ -549,12 +550,16 @@ ul {
 }
 
 
-.factsAboutMe li:last-child {
-  margin: 3vw 0;
+button.liButton {
+  margin: 3vw -3vw;
   cursor: pointer;
   background-color: green;
+  opacity: 1;
 }
 
+.textAboutme {
+  text-align: left;
+}
 
 footer {
   grid-area: 4/1 / span 1 / span 3;
@@ -580,8 +585,8 @@ footer h4 {
 }
 
 .icons img {
-  width: 6.5%;
-  padding: 0 1vw;
+  width: 50px;
+  height: 40px;
   object-fit: contain;
 }
 
