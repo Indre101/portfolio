@@ -20,7 +20,7 @@ function init() {
 }
 
 function toggleMenu(HTML, i) {
-  HTML.menuButton.onclick = function() {
+  HTML.menuButton.onclick = function () {
     i++;
     HTML.menuIconDashes.forEach(dash => {
       setTimeout(() => {
@@ -89,3 +89,28 @@ function showPorjectCard(project, HTML) {
 
   HTML.projects.appendChild(projectsCardCln);
 }
+
+const aboutme = document.querySelector(".textAboutme");
+
+const options = {
+  rootMargin: "15%",
+  threshold: 1
+}
+
+const observerPageSections = new IntersectionObserver(function (entries, observerPageSections) {
+
+  entries.forEach(entry => {
+
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      console.log(entry);
+
+      entry.target.dataset.appear = "true"
+    }
+  })
+}, options)
+
+const pageSections = document.querySelectorAll(".factsAboutMe li");
+
+pageSections.forEach(sectionP => observerPageSections.observe(sectionP, options))

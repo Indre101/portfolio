@@ -1,135 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Home</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Home</title>
-</head>
-
-<body>
-  <div class="landingPageContainer">
-    <div id="menuButton" class="menuBtnContainer">
-      <div class="dash"></div>
-      <div class="dash"></div>
-      <div class="dash"></div>
+  <body>
+    <div class="landingPageContainer">
+      <div id="menuButton" class="menuBtnContainer">
+        <div class="dash"></div>
+        <div class="dash"></div>
+        <div class="dash"></div>
+      </div>
+      <div class="catWithGlassses">
+        <img
+          class="catImage"
+          src="./images/photos/grumpy.png"
+          alt="Cat image funny"
+        />
+        <!-- <img class="catsPaw" src="./images/photos/catpaw.png" alt="Cats paw"> -->
+        <img
+          class="glassess align-justify-self-center"
+          src="./images/photos/glasses.png"
+          alt="Glasses for cat"
+        />
+      </div>
+      <article class="welcomeMessage align-justify-self-center">
+        <h1>Hi, I am Indre</h1>
+        <h4>
+          Passionate about front end development.<br />
+          Great sense of humour
+        </h4>
+      </article>
     </div>
-    <div class="catWithGlassses">
-      <img class="catImage" src="./images/photos/grumpy.png" alt="Cat image funny" />
-      <!-- <img class="catsPaw" src="./images/photos/catpaw.png" alt="Cats paw"> -->
-      <img class="glassess align-justify-self-center" src="./images/photos/glasses.png" alt="Glasses for cat" />
 
-    </div>
-    <article class="welcomeMessage align-justify-self-center">
-      <h1>Hi, I am Indre</h1>
-      <h4>
-        Passionate about front end development.<br />
-        Great sense of humour
-      </h4>
+    <article
+      id="openMenuWindow"
+      class="openMenuWindow d-none slideDownAnimation"
+    >
+      <a href="">
+        <h2>Home</h2>
+      </a>
+      <a href="">
+        <h2>About Me</h2>
+      </a>
+      <a href="">
+        <h2>Projects</h2>
+      </a>
+      <a href="">
+        <h2>Contact</h2>
+      </a>
     </article>
-  </div>
 
-  <article id="openMenuWindow" class="openMenuWindow d-none slideDownAnimation">
-    <a href="">
-      <h2>Home</h2>
-    </a>
-    <a href="">
-      <h2>About Me</h2>
-    </a>
-    <a href="">
+    <section class="pageSection projectsPageContainer">
       <h2>Projects</h2>
-    </a>
-    <a href="">
-      <h2>Contact</h2>
-    </a>
-  </article>
-
-  <section class="projectsPageContainer">
-    <h2>Projects</h2>
-    <div class="projectsFilters align-justify-self-center">
-      <div class="option ">
-        <input id="All" type="radio" name="projects" value="personal" />
-        <label class="filterOption" for="All">All</label>
+      <div class="projectsFilters align-justify-self-center">
+        <div class="option ">
+          <input id="All" type="radio" name="projects" value="personal" />
+          <label class="filterOption" for="All">All</label>
+        </div>
+        <div class="option">
+          <input id="school" type="radio" name="projects" value="school" />
+          <label class="filterOption" for="school">School</label>
+        </div>
+        <div class="option ">
+          <input id="personal" type="radio" name="projects" value="personal" />
+          <label class="filterOption" for="personal">Personal</label>
+        </div>
       </div>
-      <div class="option">
-        <input id="school" type="radio" name="projects" value="school" />
-        <label class="filterOption" for="school">School</label>
-      </div>
-      <div class="option ">
-        <input id="personal" type="radio" name="projects" value="personal" />
-        <label class="filterOption" for="personal">Personal</label>
-      </div>
-    </div>
-    <div class="projects">
-
-
-      <template class="projectTemplate">
-        <article class="project">
-          <div class="projectCard">
-            <div class="projectCardFront">
-              <img class="projectImage" src="./chad.png" alt="Project image">
-              <div class="shortInfo">
-                <div class="text">
-                  <h3 class="nameofProject">Adventures of chad</h3>
-                  <h5 class="typeOfTheProject">Website/animation</h5>
+      <div class="projects">
+        <template class="projectTemplate">
+          <article class="project">
+            <div class="projectCard">
+              <div class="projectCardFront">
+                <img
+                  class="projectImage"
+                  src="./chad.png"
+                  alt="Project image"
+                />
+                <div class="shortInfo">
+                  <div class="text">
+                    <h3 class="nameofProject">Adventures of chad</h3>
+                    <h5 class="typeOfTheProject">Website/animation</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="cardBack">
+                <h3>To read more about the project click here</h3>
+                <div class="linkContainer">
+                  <h5>Link to solution</h5>
+                  <img
+                    class="linkIcon"
+                    src="./images/icons/link-1.svg"
+                    alt="Link icon"
+                  />
                 </div>
               </div>
             </div>
-            <div class="cardBack">
-              <h3>To read more about the project click here</h3>
-              <div class="linkContainer">
-                <h5>Link to solution</h5>
-                <img class="linkIcon" src="./images/icons/link-1.svg" alt="Link icon">
-
-              </div>
-            </div>
-
-          </div>
-        </article>
-      </template>
-    </div>
-  </section>
-
-  <section class="aboutMePageContainer">
-    <h2>About me</h2>
-
-    <div class="infoAboutMe">
-      <img src="./images/photos/indre-1.png" alt="Image of me" />
-      <div class="text">
-        <ul class="factsAboutMe">
-          <li>I am a student at KEA</li>
-          <li>I enjoy coding, a lot, why? because it is challenging but it's very gratifying to see the growth in my
-            skills</li>
-          <li>I feel comfortable while using CSS, HTML</li>
-          <li>JS is complex but very fun and interesting to be working with</li>
-          <li>Every bug that comes a long is an oportunity to grown and learn</li>
-          <li>I am motivated, positive and communicative person </li>
-          <li>Read more about me</li>
-        </ul>
+          </article>
+        </template>
       </div>
-    </div>
+    </section>
 
-    <div class="aboutMeModal">
-      <div class="inner">
-        <p>
-          Let me tell you more about myself then, I started education at KEA
-        </p>
+    <section class="pageSection aboutMePageContainer">
+      <h2>About me</h2>
+
+      <div class="infoAboutMe">
+        <img src="./images/photos/indre-1.png" alt="Image of me" />
+        <div class="text textAboutme">
+          <ul class="factsAboutMe">
+            <li>I am a student at KEA</li>
+            <li>
+              I enjoy coding, a lot, why? because it is challenging but it's
+              very gratifying to see the growth in my skills
+            </li>
+            <li>I feel comfortable while using CSS, HTML</li>
+            <li>
+              JS is complex but very fun and interesting to be working with
+            </li>
+            <li>
+              Every bug that comes a long is an oportunity to grown and learn
+            </li>
+            <li>I am motivated, positive and communicative person</li>
+            <li>Read more about me</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <footer>
-      <div class="icons">
-        <img src="./images/icons/icon-one.png" alt="Icon of social media" />
-        <img src="./images/icons/icon-2.png" alt="Icon of social media" />
-        <img src="./images/icons/mail-1.svg" alt="Icon of social media" />
-        <!-- <h4>email: zygaityte.indre@gmail.com</h4> -->
+      <div class="aboutMeModal">
+        <div class="inner">
+          <p>
+            Let me tell you more about myself then, I started education at KEA
+          </p>
+        </div>
       </div>
-    </footer>
-  </section>
 
-  <script src="script.js"></script>
-</body>
+      <footer>
+        <div class="icons">
+          <img src="./images/icons/icon-one.png" alt="Icon of social media" />
+          <img src="./images/icons/icon-2.png" alt="Icon of social media" />
+          <img src="./images/icons/mail-1.svg" alt="Icon of social media" />
+          <!-- <h4>email: zygaityte.indre@gmail.com</h4> -->
+        </div>
+      </footer>
+    </section>
 
+    <script src="script.js"></script>
+  </body>
 </html>

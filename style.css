@@ -742,10 +742,21 @@ div.imageAndTextCaption:hover {}
 }
 
 
+.factsAboutMe li[data-appear="true"] {
+  animation: appear 0.5s ease-in forwards 1;
+}
+
+
 /* ========
 Animations
 =========== */
 
+@keyframes appear {
+  0% {
+    transform: translateY(10vh);
+  }
+
+}
 
 
 @keyframes opacityToOne {
