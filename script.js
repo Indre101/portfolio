@@ -93,7 +93,7 @@ function showPorjectCard(project, HTML) {
 const aboutme = document.querySelector(".textAboutme");
 
 const options = {
-  rootMargin: "15%",
+  rootMargin: "25% 0% 0% 0%",
   threshold: 1
 }
 
