@@ -8,6 +8,8 @@ function getHTMLelements() {
   HTML.projectTemplate = document.querySelector(".projectTemplate").content;
   HTML.filterOption = document.querySelectorAll(".filterOption");
   HTML.projects = document.querySelector(".projects");
+  HTML.moreAboutMe = document.querySelector(".liButton");
+  HTML.aboutMeModal = document.querySelector(".aboutMeModal");
   return HTML;
 }
 
@@ -17,6 +19,30 @@ function init() {
   getData(HTML);
   toggleMenu(HTML, i);
   changeLabelsIcons(HTML);
+  showHideModal(HTML)
+}
+
+function showHideModal(HTML) {
+  HTML.moreAboutMe.onclick = function () {
+    setElementDatasetShow(HTML.aboutMeModal)
+  }
+
+  HTML.aboutMeModal.onclick = function () {
+    setElementDatasetShow(HTML.aboutMeModal)
+  }
+}
+
+
+function setElementDatasetShow(element) {
+
+  if (element.dataset.show === "show") {
+
+    element.dataset.show = ""
+
+  } else if (element.dataset.show != "show") {
+    element.dataset.show = "show"
+
+  }
 }
 
 function toggleMenu(HTML, i) {
@@ -104,7 +130,6 @@ const observerPageSections = new IntersectionObserver(function (entries, observe
     if (!entry.isIntersecting) {
       return;
     } else {
-      console.log(entry);
 
       entry.target.dataset.appear = "true"
     }
